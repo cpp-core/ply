@@ -5,6 +5,7 @@
 #include "ply/color.h"
 #include "ply/dash.h"
 #include "ply/shape.h"
+#include "core/mp/contains.h"
 
 namespace ply
 {
@@ -19,11 +20,14 @@ struct Line
     Line& width(T w) { json["width"] = w; return *this; }
     
     template<class T>
-    requires std::is_same_v<T,Dash> or std::is_same_v<T,Shape> or std::is_same_v<T,Color>
+    requires core::mp::is_member_v<T,Color,Dash,Shape>
     Line& set(T obj) { json[as_string<T>()] = as_json(obj); return *this; }
 
     core::json json;
 };
+
+template<> string as_string<Line>() { return "line"; }
+core::json as_json(const Line& line) { return line.json; }
 
 }; // ply
 

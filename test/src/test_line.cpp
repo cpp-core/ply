@@ -6,7 +6,7 @@
 
 TEST(Ply, Line)
 {
-    core::json expected = core::json::object();
+    auto expected = core::json::object();
     auto actual = ply::Line().json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }

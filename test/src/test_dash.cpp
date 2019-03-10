@@ -6,7 +6,7 @@
 
 TEST(Ply, Dash)
 {
-    core::json expected = "dash";
+    auto expected = "dash";
     auto actual = ply::as_string<ply::Dash>();
     EXPECT_EQ(actual, expected);
 }

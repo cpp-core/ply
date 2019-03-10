@@ -6,7 +6,7 @@
 
 TEST(Ply, GroupNorm)
 {
-    core::json expected = "groupnorm";
+    auto expected = "groupnorm";
     auto actual = ply::as_string<ply::GroupNorm>();
     EXPECT_EQ(actual, expected);
 }

@@ -7,6 +7,9 @@ set(TESTS
   dash
   group_norm
   line
+  orientation
+  scatter
+  shape
   )
 
 foreach(NAME ${TESTS})
