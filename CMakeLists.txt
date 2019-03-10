@@ -24,6 +24,7 @@ add_compile_options(-O3)
 
 set(SOURCES
   placeholder.cpp
+  generate.cpp
   )
 
 foreach(NAME ${SOURCES})
