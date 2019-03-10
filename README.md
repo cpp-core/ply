@@ -1,2 +1,2 @@
-# cxx-repo
-Template repository for cxx-core based projects.
+# cxx-ply
+Produce high quality plotly.js based plots using C++.
