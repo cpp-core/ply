@@ -4,6 +4,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(TESTS
   color
+  dash
+  group_norm
+  line
   )
 
 foreach(NAME ${TESTS})

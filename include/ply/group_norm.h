@@ -9,6 +9,8 @@ namespace ply
 
 enum class GroupNorm { None, Fraction, Percent };
 
+template<> string as_string<GroupNorm>() { return "groupnorm"; }
+
 string as_string(GroupNorm g)
 {
     switch (g)
