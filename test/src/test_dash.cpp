@@ -14,43 +14,43 @@ TEST(Ply, Dash)
 TEST(Ply, DashSolid)
 {
     core::json expected = "solid";
-    auto actual = as_string(ply::Dash::Solid);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::Solid);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, DashDot)
 {
     core::json expected = "dot";
-    auto actual = as_string(ply::Dash::Dot);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::Dot);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, DashDash)
 {
     core::json expected = "dash";
-    auto actual = as_string(ply::Dash::Dash);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::Dash);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, DashLongDash)
 {
     core::json expected = "longdash";
-    auto actual = as_string(ply::Dash::LongDash);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::LongDash);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, DashDashDot)
 {
     core::json expected = "dashdot";
-    auto actual = as_string(ply::Dash::DashDot);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::DashDot);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, DashLongDashDot)
 {
     core::json expected = "longdashdot";
-    auto actual = as_string(ply::Dash::LongDashDot);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::Dash::LongDashDot);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 int main(int argc, char *argv[])

@@ -11,7 +11,7 @@ enum class GroupNorm { None, Fraction, Percent };
 
 template<> string as_string<GroupNorm>() { return "groupnorm"; }
 
-string as_string(GroupNorm g)
+core::json as_json(GroupNorm g)
 {
     switch (g)
     {
@@ -19,7 +19,7 @@ string as_string(GroupNorm g)
     case GroupNorm::Fraction: return "fraction";
     case GroupNorm::Percent: return "percent";
     }
-    throw std::runtime_error("GroupNorm::as_string: unknown enum value");
+    throw std::runtime_error("GroupNorm::as_json: unknown enum value");
 }
 
 }; // ply

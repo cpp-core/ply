@@ -14,22 +14,22 @@ TEST(Ply, GroupNorm)
 TEST(Ply, GroupNormNone)
 {
     core::json expected = "";
-    auto actual = as_string(ply::GroupNorm::None);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::GroupNorm::None);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, GroupNormFraction)
 {
     core::json expected = "fraction";
-    auto actual = as_string(ply::GroupNorm::Fraction);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::GroupNorm::Fraction);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, GroupNormPercent)
 {
     core::json expected = "percent";
-    auto actual = as_string(ply::GroupNorm::Percent);
-    EXPECT_EQ(actual, expected);
+    auto actual = as_json(ply::GroupNorm::Percent);
+    EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 int main(int argc, char *argv[])

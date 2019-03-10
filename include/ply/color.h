@@ -10,7 +10,7 @@ namespace ply
 struct Color
 {
     Color()
-    { json = "rgb(255,255,255)"; }
+    { json = core::json::object(); }
     
     Color& rgb(int red, int green, int blue)
     { json = fmt::format("rgb({:d},{:d},{:d})", red, green, blue); return *this; }
@@ -20,6 +20,10 @@ struct Color
     
     core::json json;
 };
+
+template<> string as_string<Color>() { return "color"; }
+
+core::json as_json(Color& c) { return c.json; }
 
 }; // ply
 

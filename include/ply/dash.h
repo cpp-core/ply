@@ -11,7 +11,7 @@ enum class Dash { Solid, Dot, Dash, LongDash, DashDot, LongDashDot };
 
 template<> string as_string<Dash>() { return "dash"; }
 
-string as_string(Dash d)
+core::json as_json(Dash d)
 {
     switch (d)
     {
@@ -22,7 +22,7 @@ string as_string(Dash d)
     case Dash::DashDot: return "dashdot";
     case Dash::LongDashDot: return "longdashdot";
     }
-    throw std::runtime_error("Dash::as_string: unknown enum value");
+    throw std::runtime_error("Dash::as_json: unknown enum value");
 }
 
 }; // ply

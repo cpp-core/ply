@@ -29,7 +29,7 @@ struct Scatter
     Scatter& dy(real dy) { json["dy"] = dy; return *this; }
 
     template<class Enum>
-    Scatter& set(Enum e) { json[as_string<Enum>()] = as_string(e); return *this; }
+    Scatter& set(Enum e) { json[as_string<Enum>()] = as_json(e); return *this; }
 
     Scatter& text(string_view str) { json["text"] = str; return *this; }
     Scatter& line(const Line& l) { json["line"] = l.json; return *this; }

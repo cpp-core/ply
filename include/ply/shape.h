@@ -11,7 +11,7 @@ enum class Shape { Linear, Spline, HV, VH, HVH, VHV };
 
 template<> string as_string<Shape>() { return "shape"; }
 
-string as_string(Shape s)
+core::json as_json(Shape s)
 {
     switch (s)
     {
@@ -22,7 +22,7 @@ string as_string(Shape s)
     case Shape::HVH: return "hvh";
     case Shape::VHV: return "vhv";
     }
-    throw std::runtime_error("Shape::as_string: unknown enum value");
+    throw std::runtime_error("Shape::as_json: unknown enum value");
 }
 
 }; // ply

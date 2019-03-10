@@ -41,14 +41,14 @@ TEST(Ply, LineSimplify)
 
 TEST(Ply, LineDash)
 {
-    core::json expected = {{ "dash", as_string(ply::Dash::LongDash) }};
+    core::json expected = {{ "dash", as_json(ply::Dash::LongDash) }};
     auto actual = ply::Line().set(ply::Dash::LongDash).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineShape)
 {
-    core::json expected = {{ "shape", as_string(ply::Shape::Spline) }};
+    core::json expected = {{ "shape", as_json(ply::Shape::Spline) }};
     auto actual = ply::Line().set(ply::Shape::Spline).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
