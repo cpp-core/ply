@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(TESTS
-  placeholder
+  color
   )
 
 foreach(NAME ${TESTS})

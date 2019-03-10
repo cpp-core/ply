@@ -9,13 +9,14 @@ namespace ply
 
 struct Color
 {
-    Color() = default;
+    Color()
+    { json = "rgb(255,255,255)"; }
     
     Color& rgb(int red, int green, int blue)
     { json = fmt::format("rgb({:d},{:d},{:d})", red, green, blue); return *this; }
     
     Color& rgba(int red, int green, int blue, real alpha)
-    { json = fmt::format("rgb({:d},{:d},{:d},{})", red, green, blue, alpha); return *this; }
+    { json = fmt::format("rgba({:d},{:d},{:d},{})", red, green, blue, alpha); return *this; }
     
     core::json json;
 };
