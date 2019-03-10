@@ -15,7 +15,7 @@ struct Scatter
     Scatter() { json = {{ "type", "scatter" }}; }
 
     Scatter& visible(bool b) { json["visible"] = b; return *this; }
-    Scatter& visible_legend() { json["visible"] = "ledendonly"; return *this; }
+    Scatter& visible_legend() { json["visible"] = "legendonly"; return *this; }
     Scatter& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     Scatter& opacity(real alpha) { json["opacity"] = alpha; return *this; }

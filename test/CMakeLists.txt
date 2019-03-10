@@ -7,6 +7,7 @@ set(TESTS
   dash
   group_norm
   line
+  ohlc
   orientation
   scatter
   shape
