@@ -9,9 +9,9 @@ namespace ply
 
 enum class Dash { Solid, Dot, Dash, LongDash, DashDot, LongDashDot };
 
-template<> string as_string<Dash>() { return "dash"; }
+template<> inline string as_string<Dash>() { return "dash"; }
 
-core::json as_json(Dash d)
+inline core::json as_json(Dash d)
 {
     switch (d)
     {

@@ -34,7 +34,7 @@ struct OHLC : Trace
     OHLC& set(T obj) { json[as_string<T>()] = as_json(obj); return *this; }
 };
 
-template<> string as_string<OHLC>() { return "ohlc"; }
+template<> inline string as_string<OHLC>() { return "ohlc"; }
 
 }; // ply
 

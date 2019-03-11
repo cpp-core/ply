@@ -3,14 +3,19 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(TESTS
+  anchor
   color
   dash
   group_norm
   line
+  margin
   ohlc
   orientation
+  pad
+  ref
   scatter
   shape
+  title
   )
 
 foreach(NAME ${TESTS})

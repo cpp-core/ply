@@ -21,9 +21,8 @@ struct Color
     core::json json;
 };
 
-template<> string as_string<Color>() { return "color"; }
-
-core::json as_json(Color& c) { return c.json; }
+template<> inline string as_string<Color>() { return "color"; }
+inline core::json as_json(const Color& c) { return c.json; }
 
 }; // ply
 

@@ -9,9 +9,9 @@ namespace ply
 
 enum class Orientation { H, V };
 
-template<> string as_string<Orientation>() { return "orientation"; }
+template<> inline string as_string<Orientation>() { return "orientation"; }
 
-core::json as_json(Orientation o)
+inline core::json as_json(Orientation o)
 {
     switch (o)
     {

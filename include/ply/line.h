@@ -26,8 +26,8 @@ struct Line
     core::json json;
 };
 
-template<> string as_string<Line>() { return "line"; }
-core::json as_json(const Line& line) { return line.json; }
+template<> inline string as_string<Line>() { return "line"; }
+inline core::json as_json(const Line& line) { return line.json; }
 
 }; // ply
 

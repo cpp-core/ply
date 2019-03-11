@@ -15,8 +15,5 @@ struct Trace
 
 using Traces = vector<Trace>;
 
-struct Layout
-{ core::json json; };
-
 }; // ply
 

@@ -9,9 +9,9 @@ namespace ply
 
 enum class GroupNorm { None, Fraction, Percent };
 
-template<> string as_string<GroupNorm>() { return "groupnorm"; }
+template<> inline string as_string<GroupNorm>() { return "groupnorm"; }
 
-core::json as_json(GroupNorm g)
+inline core::json as_json(GroupNorm g)
 {
     switch (g)
     {
