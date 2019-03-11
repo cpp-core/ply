@@ -10,7 +10,7 @@
 namespace ply
 {
 
-struct Scatter
+struct Scatter : public Trace
 {
     Scatter() { json = {{ "type", "scatter" }}; }
 
@@ -35,8 +35,6 @@ struct Scatter
     Scatter& set(T obj) { json[as_string<T>()] = as_json(obj); return *this; }
 
     Scatter& text(string_view str) { json["text"] = str; return *this; }
-
-    core::json json;
 };
 
 template<> string as_string<Scatter>() { return "scatter"; }

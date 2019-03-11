@@ -10,5 +10,13 @@ namespace ply
 
 template<class T> string as_string();
 
+struct Trace
+{ core::json json; };
+
+using Traces = vector<Trace>;
+
+struct Layout
+{ core::json json; };
+
 }; // ply
 

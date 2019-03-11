@@ -17,7 +17,7 @@ int tool_main(int argc, const char *argv[])
 	.y(ints{1, 2, 2, 3, 4, 5, 3, 2, 1})
 	;
 
-    generate_html(s.json);
+    ply::generate_html(s);
     
     return 0;
 }
