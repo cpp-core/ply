@@ -5,85 +5,62 @@
 #include "ply/base.h"
 #include "core/pp.h"
 
-#define CODE_CASE(name, seq) case name::HEAD_SEQ(seq): return SECOND_SEQ(seq);
+#define PLY_ENUM_CASE(name, seq) case name::HEAD_SEQ(seq): return SECOND_SEQ(seq);
 
-#define CODE(name, jname, seq)						\
+#define PLY_ENUM_DECL(name, jname, seq)						\
     namespace ply {							\
     enum class name { MAP_INFIX_SEQ(HEAD_SEQ, COMMA, seq) };		\
     template<> inline string as_string<name>() { return jname; }	\
     inline core::json as_json(name o) {					\
-    	switch(o) { MAP_WITH_SEQ(CODE_CASE,name,seq) }			\
+    	switch(o) { MAP_WITH_SEQ(PLY_ENUM_CASE,name,seq) }		\
      	throw std::runtime_error(#name "::as_json: unknown enum value"); \
     }}; // ply
 
-// Anchor
-EVAL(CODE(Anchor, "anchor",
-	  ((Auto, "auto"),
-	   (Left, "left"),
-	   (Center, "center"),
-	   (Right, "right"))))
+#define PLY_DEFINE_ENUM(seq) EVAL(PLY_ENUM_DECL(HEAD_SEQ(seq), SECOND_SEQ(seq), THIRD_SEQ(seq)))
 
-// AutoRange
-EVAL(CODE(AutoRange, "autorange",
-	  ((True, true),
-	   (False, false),
-	   (Reversed, "reversed"))))
+#define PLY_ENUM_ANCHOR \
+    (Anchor, "anchor", ((Auto, "auto"), (Left, "left"), (Center, "center"), (Right, "right")))
+PLY_DEFINE_ENUM(PLY_ENUM_ANCHOR)
 
-// AxisType
-EVAL(CODE(AxisType, "type",
-	  ((Dash, "-"),
-	   (Linear, "linear"),
-	   (Log, "log"),
-	   (Date, "date"),
-	   (Category, "category"),
-	   (MultiCategory, "multicategory"))))
+#define PLY_ENUM_AUTO_RANGE \
+    (AutoRange, "autorange", ((True, true), (False, false), (Reversed, "reversed")))
+PLY_DEFINE_ENUM(PLY_ENUM_AUTO_RANGE)
 
-// Dash
-EVAL(CODE(Dash, "dash", 
-	  ((Solid, "solid"),
-	   (Dot, "dot"),
-	   (Dash, "dash"),
-	   (LongDash, "longdash"),
-	   (DashDot, "dashdot"),
-	   (LongDashDot, "longdashdot"))))
+#define PLY_ENUM_AXIS_TYPE \
+    (AxisType, "type", ((Dash, "-"), (Linear, "linear"), (Log, "log"), (Date, "date"),\
+	(Category, "category"), (MultiCategory, "multicategory")))
+PLY_DEFINE_ENUM(PLY_ENUM_AXIS_TYPE)
 
-// GroupNorm
-EVAL(CODE(GroupNorm, "groupnorm",
-	  ((None, ""),
-	   (Fraction, "fraction"),
-	   (Percent, "percent"))))
+#define PLY_ENUM_DASH \
+    (Dash, "dash", ((Solid, "solid"), (Dot, "dot"), (Dash, "dash"), (LongDash, "longdash"), \
+	(DashDot, "dashdot"), (LongDashDot, "longdashdot")))
+PLY_DEFINE_ENUM(PLY_ENUM_DASH)
 
-// Orientation
-EVAL(CODE(Orientation, "orientation",
-	  ((H, "h"),
-	   (V, "v"))))
+#define PLY_ENUM_GROUP_NORM \
+    (GroupNorm, "groupnorm", ((None, ""), (Fraction, "fraction"), (Percent, "percent")))
+PLY_DEFINE_ENUM(PLY_ENUM_GROUP_NORM)
 
-// Ref
-EVAL(CODE(Ref, "ref",
-	  ((Container, "container"),
-	   (Paper, "paper"))))
+#define PLY_ENUM_ORIENTATION (Orientation, "orientation", ((H, "h"), (V, "v")))
+PLY_DEFINE_ENUM(PLY_ENUM_ORIENTATION)
 
-// RangeMode
-EVAL(CODE(RangeMode, "rangemode",
-	  ((Normal,"normal"),
-	   (ToZero,"tozero"),
-	   (NonNegative,"nonnegative"))))
+#define PLY_ENUM_REF (Ref, "ref", ((Container, "container"), (Paper, "paper")))
+PLY_DEFINE_ENUM(PLY_ENUM_REF)
 
-// Shape
-EVAL(CODE(Shape, "shape",
-	  ((Linear, "linear"),
-	   (Spline, "spline"),
-	   (HV, "hv"),
-	   (VH, "vh"),
-	   (HVH, "hvh"),
-	   (VHV, "vhv"))))
+#define PLY_ENUM_RANGE_MODE \
+    (RangeMode, "rangemode", ((Normal,"normal"), (ToZero,"tozero"), (NonNegative,"nonnegative")))
+PLY_DEFINE_ENUM(PLY_ENUM_RANGE_MODE)
 
-// TickMode
-EVAL(CODE(TickMode, "tickmode",
-	  ((Auto, "auto"),
-	   (Linear, "linear"),
-	   (Array, "array"))))
+#define PLY_ENUM_SHAPE \
+    (Shape, "shape", ((Linear, "linear"), (Spline, "spline"), (HV, "hv"), (VH, "vh"),\
+		      (HVH, "hvh"), (VHV, "vhv")))
+PLY_DEFINE_ENUM(PLY_ENUM_SHAPE)
 
-#undef CODE
-#undef CODE_CASE
+#define PLY_ENUM_TICK_MODE \
+    (TickMode, "tickmode", ((Auto, "auto"), (Linear, "linear"), (Array, "array")))
+PLY_DEFINE_ENUM(PLY_ENUM_TICK_MODE)
+    
+
+#undef PLY_DEFINE_ENUM
+#undef PLY_ENUM_DECL
+#undef PLY_ENUM_CASE
 

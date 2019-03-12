@@ -8,6 +8,7 @@ set(TESTS
   axis_type
   color
   dash
+  enum
   group_norm
   line
   margin
