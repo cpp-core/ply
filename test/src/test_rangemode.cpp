@@ -2,7 +2,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ply/rangemode.h"
+#include "ply/enum.h"
 
 TEST(Ply, RangeMode)
 {

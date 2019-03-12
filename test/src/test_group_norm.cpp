@@ -2,7 +2,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ply/group_norm.h"
+#include "ply/enum.h"
 
 TEST(Ply, GroupNorm)
 {

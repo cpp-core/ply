@@ -4,7 +4,7 @@
 #pragma once
 #include "ply/base.h"
 #include "ply/color.h"
-#include "ply/dash.h"
+#include "ply/enum.h"
 #include "ply/generate.h"
 #include "ply/group_norm.h"
 #include "ply/layout.h"

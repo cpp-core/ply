@@ -2,7 +2,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ply/anchor.h"
+#include "ply/enum.h"
 
 TEST(Ply, AnchorAuto)
 {

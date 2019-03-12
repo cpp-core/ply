@@ -2,7 +2,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ply/orientation.h"
+#include "ply/enum.h"
 
 TEST(Ply, Orientation)
 {

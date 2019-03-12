@@ -2,7 +2,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "ply/ref.h"
+#include "ply/enum.h"
 
 TEST(Ply, RefContainer)
 {
