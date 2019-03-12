@@ -4,6 +4,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(TESTS
   anchor
+  axis_type
   color
   dash
   group_norm

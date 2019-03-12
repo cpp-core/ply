@@ -25,9 +25,11 @@ struct Title
     template<class T>
     requires core::mp::is_member_v<T,Font,Pad>
     Title& operator()(const T& obj) { json[as_string<T>()] = as_json(obj); return *this; }
-    
+
     core::json json;
 };
+
+static inline Title TitleF;
 
 template<> inline string as_string<Title>() { return "title"; }
 inline core::json as_json(const Title& title) { return title.json; }
