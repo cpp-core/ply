@@ -43,12 +43,12 @@ PLY_DEFINE_ENUM(PLY_ENUM_GROUP_NORM)
 #define PLY_ENUM_ORIENTATION (Orientation, "orientation", ((H, "h"), (V, "v")))
 PLY_DEFINE_ENUM(PLY_ENUM_ORIENTATION)
 
-#define PLY_ENUM_REF (Ref, "ref", ((Container, "container"), (Paper, "paper")))
-PLY_DEFINE_ENUM(PLY_ENUM_REF)
-
 #define PLY_ENUM_RANGE_MODE \
     (RangeMode, "rangemode", ((Normal,"normal"), (ToZero,"tozero"), (NonNegative,"nonnegative")))
 PLY_DEFINE_ENUM(PLY_ENUM_RANGE_MODE)
+
+#define PLY_ENUM_REF (Ref, "ref", ((Container, "container"), (Paper, "paper")))
+PLY_DEFINE_ENUM(PLY_ENUM_REF)
 
 #define PLY_ENUM_SHAPE \
     (Shape, "shape", ((Linear, "linear"), (Spline, "spline"), (HV, "hv"), (VH, "vh"),\
