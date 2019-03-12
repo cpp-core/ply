@@ -4,6 +4,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
 set(TESTS
   anchor
+  autorange
   axis_type
   color
   dash
@@ -13,6 +14,7 @@ set(TESTS
   ohlc
   orientation
   pad
+  rangemode
   ref
   scatter
   shape
