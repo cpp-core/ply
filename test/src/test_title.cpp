@@ -58,14 +58,14 @@ TEST(Ply, TitleY)
 TEST(Ply, TitleXAnchor)
 {
     core::json expected = {{ "xanchor", "auto" }};
-    auto actual = ply::Title().xAnchor(ply::Anchor::Auto).json;
+    auto actual = ply::Title()(ply::XAnchor::Auto).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, TitleYAnchor)
 {
-    core::json expected = {{ "yanchor", "left" }};
-    auto actual = ply::Title().yAnchor(ply::Anchor::Left).json;
+    core::json expected = {{ "yanchor", "bottom" }};
+    auto actual = ply::Title()(ply::YAnchor::Bottom).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

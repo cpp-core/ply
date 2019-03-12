@@ -18,11 +18,9 @@ struct Title
     Title& yRef(Ref yref) { json["yref"] = as_json(yref); return *this; }
     template<Arithmetic T> Title& x(T x) { json["x"] = x; return *this; }
     template<Arithmetic T> Title& y(T y) { json["y"] = y; return *this; }
-    Title& xAnchor(Anchor xanchor) { json["xanchor"] = as_json(xanchor); return *this; }
-    Title& yAnchor(Anchor yanchor) { json["yanchor"] = as_json(yanchor); return *this; }
 
     template<class T>
-    requires core::mp::is_member_v<T,Font,Pad>
+    requires core::mp::is_member_v<T,Font,Pad,XAnchor,YAnchor>
     Title& operator()(const T& obj) { json[as_string<T>()] = as_json(obj); return *this; }
 
     core::json json;
