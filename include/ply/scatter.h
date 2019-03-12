@@ -2,9 +2,8 @@
 //
 
 #pragma once
+#include "ply/enum.h"
 #include "ply/line.h"
-#include "ply/group_norm.h"
-#include "ply/orientation.h"
 #include "core/mp/contains.h"
 
 namespace ply

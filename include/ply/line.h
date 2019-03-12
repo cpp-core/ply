@@ -3,8 +3,7 @@
 
 #pragma once
 #include "ply/color.h"
-#include "ply/dash.h"
-#include "ply/shape.h"
+#include "ply/enum.h"
 #include "core/mp/contains.h"
 
 namespace ply
