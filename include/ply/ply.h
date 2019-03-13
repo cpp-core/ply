@@ -3,7 +3,6 @@
 
 #pragma once
 #include "ply/base.h"
-#include "ply/xaxis.h"
 #include "ply/color.h"
 #include "ply/enum.h"
 #include "ply/generate.h"
@@ -11,3 +10,5 @@
 #include "ply/line.h"
 #include "ply/ohlc.h"
 #include "ply/scatter.h"
+#include "ply/xaxis.h"
+#include "ply/yaxis.h"

@@ -2,16 +2,17 @@
 //
 
 #pragma once
-#include "ply/xaxis.h"
 #include "ply/font.h"
 #include "ply/margin.h"
 #include "ply/title.h"
+#include "ply/xaxis.h"
+#include "ply/yaxis.h"
 #include "core/mp/contains.h"
 
 namespace ply
 {
 
-struct Layout : Members<Layout,Font,Margin,Title,XAxis>, virtual Data
+struct Layout : Members<Layout,Font,Margin,Title,XAxis,YAxis>, virtual Data
 {
     Layout& width(real px) { json["width"] = px; return *this; }
     Layout& height(real px) { json["height"] = px; return *this; }
