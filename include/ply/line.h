@@ -9,20 +9,13 @@
 namespace ply
 {
 
-struct Line
+struct Line : Member<Line,list<Color,Dash,Shape>>, virtual Data
 {
-    Line() { json = core::json::object(); }
     Line& smoothing(real s) { json["smoothing"] = s; return *this; }
     Line& simplify(bool b) { json["simplify"] = b; return *this; }
 
     template<Arithmetic T>
     Line& width(T w) { json["width"] = w; return *this; }
-    
-    template<class T>
-    requires core::mp::is_member_v<T,Color,Dash,Shape>
-    Line& set(T obj) { json[as_string<T>()] = as_json(obj); return *this; }
-
-    core::json json;
 };
 
 template<> inline string as_string<Line>() { return "line"; }

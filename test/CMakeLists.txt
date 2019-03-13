@@ -9,8 +9,10 @@ set(TESTS
   margin
   ohlc
   pad
+  range_slider
   scatter
   title
+  xaxis
   )
 
 foreach(NAME ${TESTS})

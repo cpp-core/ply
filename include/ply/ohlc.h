@@ -9,7 +9,7 @@
 namespace ply
 {
 
-struct OHLC : Trace
+struct OHLC : Member<OHLC,list<Color,Line>>, Trace
 {
     OHLC() { json = {{ "type", "ohlc" }}; }
 
@@ -27,10 +27,6 @@ struct OHLC : Trace
     template<class C> OHLC& high(const C& data) { json["high"] = data; return *this; }
     template<class C> OHLC& low(const C& data) { json["low"] = data; return *this; }
     template<class C> OHLC& close(const C& data) { json["close"] = data; return *this; }
-
-    template<class T>
-    requires core::mp::is_member_v<T,Color,Line>
-    OHLC& set(T obj) { json[as_string<T>()] = as_json(obj); return *this; }
 };
 
 template<> inline string as_string<OHLC>() { return "ohlc"; }

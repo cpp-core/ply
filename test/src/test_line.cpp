@@ -14,7 +14,7 @@ TEST(Ply, Line)
 TEST(Ply, LineColor)
 {
     core::json expected = {{ "color", "rgb(1,2,3)" }};
-    auto actual = ply::Line().set(ply::Color().rgb(1,2,3)).json;
+    auto actual = ply::Line()(ply::Color().rgb(1,2,3)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -42,14 +42,14 @@ TEST(Ply, LineSimplify)
 TEST(Ply, LineDash)
 {
     core::json expected = {{ "dash", as_json(ply::Dash::LongDash) }};
-    auto actual = ply::Line().set(ply::Dash::LongDash).json;
+    auto actual = ply::Line()(ply::Dash::LongDash).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineShape)
 {
     core::json expected = {{ "shape", as_json(ply::Shape::Spline) }};
-    auto actual = ply::Line().set(ply::Shape::Spline).json;
+    auto actual = ply::Line()(ply::Shape::Spline).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

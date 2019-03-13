@@ -98,6 +98,9 @@
 #define PLY_ENUM_SIDE \
     (Side, "side", ((Top, "top"), (Bottom, "bottom"), (Left, "left"), (Right, "right")))
 
+#define PLY_ENUM_SLIDER_RANGE_MODE \
+    (SliderRangeMode, "rangemode", ((Auto,"auto"), (Fixed,"fixed"), (Match,"match")))
+
 #define PLY_ENUM_STEP \
     (Step, "step", ((Month, "month"), (Year, "year"), (Day, "day"), (Hour, "hour"), \
 		    (Minute, "minute"), (Second, "second"), (All, "all")))
@@ -117,6 +120,9 @@
 
 #define PLY_ENUM_TICK_MODE \
     (TickMode, "tickmode", ((Auto, "auto"), (Linear, "linear"), (Array, "array")))
+
+#define PLY_ENUM_VISIBLE \
+    (Visible, "visible", ((True, true), (False, false), (LegendOnly, "legendonly")))
 
 #define PLY_ENUM_XANCHOR \
     (XAnchor, "xanchor", ((Auto, "auto"), (Left, "left"), (Center, "center"), (Right, "right")))
@@ -156,12 +162,14 @@ PLY_DEFINE_ENUM(PLY_ENUM_SHOW_EXPONENT)
 PLY_DEFINE_ENUM(PLY_ENUM_SHOW_TICK_PREFIX)
 PLY_DEFINE_ENUM(PLY_ENUM_SHOW_TICK_SUFFIX)
 PLY_DEFINE_ENUM(PLY_ENUM_SIDE)
+PLY_DEFINE_ENUM(PLY_ENUM_SLIDER_RANGE_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_STEP)
 PLY_DEFINE_ENUM(PLY_ENUM_STEP_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_TICKS)
 PLY_DEFINE_ENUM(PLY_ENUM_TICKS_ON)
 PLY_DEFINE_ENUM(PLY_ENUM_TICK_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_TITLE_TYPE)
+PLY_DEFINE_ENUM(PLY_ENUM_VISIBLE)
 PLY_DEFINE_ENUM(PLY_ENUM_XANCHOR)
 PLY_DEFINE_ENUM(PLY_ENUM_XSIDE)
 PLY_DEFINE_ENUM(PLY_ENUM_YANCHOR)

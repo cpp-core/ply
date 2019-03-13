@@ -7,10 +7,8 @@
 namespace ply
 {
 
-struct Font
+struct Font : virtual Data
 {
-    Font() { json = core::json::object(); }
-    
     Font& family(string_view s) { json["family"] = s; return *this; }
     Font& arial() { json["family"] = "arial"; return *this; }
     Font& balto() { json["family"] = "balto"; return *this; }
@@ -29,8 +27,6 @@ struct Font
     
     Font& size(uint n) { json["size"] = n; return *this; }
     Font& color(const Color& color) { json["color"] = as_json(color); return *this; }
-    
-    core::json json;
 };
 
 template<> inline string as_string<Font>() { return "font"; }

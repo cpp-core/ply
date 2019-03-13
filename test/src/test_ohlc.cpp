@@ -98,14 +98,14 @@ TEST(Ply, OhlcText)
 TEST(Ply, OhlcLine)
 {
     core::json expected = {{ "type", "ohlc" }, { "line", {{ "width", 2 }}}};
-    auto actual = ply::OHLC().set(ply::Line().width(2)).json;
+    auto actual = ply::OHLC()(ply::Line().width(2)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, OhlcColor)
 {
     core::json expected = {{ "type", "ohlc" }, { "color", "rgb(1,2,3)" }};
-    auto actual = ply::OHLC().set(ply::Color().rgb(1,2,3)).json;
+    auto actual = ply::OHLC()(ply::Color().rgb(1,2,3)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
