@@ -4,8 +4,8 @@
 #pragma once
 #include "ply/enum.h"
 #include "ply/font.h"
+#include "ply/members.h"
 #include "ply/pad.h"
-#include "core/mp/contains.h"
 
 namespace ply
 {
@@ -18,9 +18,10 @@ struct Text : virtual Data
 
 struct Title : Members<Title,Font,Pad,XAnchor,YAnchor>, Text<Title>, virtual Data
 {
-    Title() { }
-    Title(string_view text) { json["text"] = text; }
+    using MembersBase = Members<Title,Font,Pad,XAnchor,YAnchor>;
+    using MembersBase::MembersBase;
     
+    Title(string_view text) { json["text"] = text; }
     Title& xRef(Ref xref) { json["xref"] = as_json(xref); return *this; }
     Title& yRef(Ref yref) { json["yref"] = as_json(yref); return *this; }
     template<Arithmetic T> Title& x(T x) { json["x"] = x; return *this; }

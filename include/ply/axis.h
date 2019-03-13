@@ -4,6 +4,7 @@
 #pragma once
 #include "ply/color.h"
 #include "ply/enum.h"
+#include "ply/members.h"
 #include "ply/title.h"
 
 namespace ply
@@ -17,7 +18,7 @@ struct Axis : Range<Axis<D>>, virtual Data
 	<D,
 	 AutoRange, AxisType, Color, Constrain, ConstrainToward, Layer,
 	 ExponentFormat, Mirror, RangeMode, Side, ShowExponent, ShowTickPrefix,
-	 ShowTickSuffix, TickMode, Ticks, TicksOn, Title,
+	 ShowTickSuffix, TickMode, Ticks, TicksOn, Title, Visible,
 	 Ts...>;
 
     Axis& visible(bool b) { json["visible"] = b; return *this; }
