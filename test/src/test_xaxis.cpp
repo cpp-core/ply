@@ -25,7 +25,7 @@ TEST(Ply, XAxisVisible)
 TEST(Ply, XAxisColor)
 {
     core::json expected = {{ "color", "rgb(32,64,128)" }};
-    auto actual = XAxis(Color().rgb(32,64,128)).json;
+    auto actual = XAxis(Color(RGB(32,64,128))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

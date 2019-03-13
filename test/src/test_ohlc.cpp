@@ -107,7 +107,7 @@ TEST(Ply, OhlcLine)
 TEST(Ply, OhlcColor)
 {
     core::json expected = {{ "type", "ohlc" }, { "color", "rgb(1,2,3)" }};
-    auto actual = OHLC(Color().rgb(1,2,3)).json;
+    auto actual = OHLC(Color(RGB(1,2,3))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

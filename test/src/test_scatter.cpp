@@ -23,7 +23,7 @@ TEST(Ply, ScatterDefault)
 TEST(Ply, ScatterPlotVisible)
 {
     core::json expected = {{ "type", "scatter" }, { "visible", false }};
-    auto actual = Scatter()(PlotVisible::False).json;
+    auto actual = Scatter(PlotVisible::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -107,14 +107,14 @@ TEST(Ply, ScatterStackGroup)
 TEST(Ply, ScatterOrientation)
 {
     core::json expected = {{ "type", "scatter" }, { "orientation", "v" }};
-    auto actual = Scatter()(Orientation::V).json;
+    auto actual = Scatter(Orientation::V).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ScatterGroupNorm)
 {
     core::json expected = {{ "type", "scatter" }, { "groupnorm", "percent" }};
-    auto actual = Scatter()(GroupNorm::Percent).json;
+    auto actual = Scatter(GroupNorm::Percent).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -128,14 +128,14 @@ TEST(Ply, ScatterText)
 TEST(Ply, ScatterLine)
 {
     core::json expected = {{ "type", "scatter" }, { "line", {{ "width", 2 }}}};
-    auto actual = Scatter()(Line().width(2)).json;
+    auto actual = Scatter(Line().width(2)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ScatterColor)
 {
     core::json expected = {{ "type", "scatter" }, { "color", "rgb(1,2,3)" }};
-    auto actual = Scatter()(Color().rgb(1,2,3)).json;
+    auto actual = Scatter(Color(RGB(1,2,3))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

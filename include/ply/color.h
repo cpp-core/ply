@@ -7,8 +7,39 @@
 namespace ply
 {
 
+struct RGB
+{
+    RGB(int arg_red, int arg_green, int arg_blue)
+	: red(arg_red)
+	, green(arg_green)
+	, blue(arg_blue)
+    { }
+    int red, green, blue;
+};
+
+struct RGBA
+{
+    RGBA(int arg_red, int arg_green, int arg_blue, real arg_alpha)
+	: red(arg_red)
+	, green(arg_green)
+	, blue(arg_blue)
+	, alpha(arg_alpha)
+    { }
+    int red, green, blue;
+    real alpha;
+};
+
 struct Color : virtual Data
 {
+    Color()
+    { }
+    
+    Color(const RGB& c)
+    { rgb(c.red, c.green, c.blue); }
+
+    Color(const RGBA& c)
+    { rgba(c.red, c.green, c.blue, c.alpha); }
+
     Color& rgb(int red, int green, int blue)
     { json = fmt::format("rgb({:d},{:d},{:d})", red, green, blue); return *this; }
     

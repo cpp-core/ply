@@ -25,7 +25,7 @@ TEST(Ply, YAxisVisible)
 TEST(Ply, YAxisColor)
 {
     core::json expected = {{ "color", "rgb(32,64,128)" }};
-    auto actual = YAxis(Color().rgb(32,64,128)).json;
+    auto actual = YAxis(Color(RGB(32,64,128))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

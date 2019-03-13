@@ -18,14 +18,14 @@ TEST(Ply, RangeSlider)
 TEST(Ply, RangeSliderBGColor)
 {
     core::json expected = {{ "bgcolor", "rgb(32,64,128)" }};
-    auto actual = RangeSlider().bgcolor(Color().rgb(32,64,128)).json;
+    auto actual = RangeSlider().bgcolor(Color(RGB(32,64,128))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, RangeSliderBorderColor)
 {
     core::json expected = {{ "bordercolor", "rgb(32,64,128)" }};
-    auto actual = RangeSlider().bordercolor(Color().rgb(32,64,128)).json;
+    auto actual = RangeSlider().bordercolor(Color(RGB(32,64,128))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
