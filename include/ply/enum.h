@@ -93,6 +93,11 @@
     (ShowExponent, "showexponent", ((All, "all"), (First, "first"), (Last, "last"), \
 				    (None, "none")))
 
+#define PLY_ENUM_MODE \
+    (Mode, "mode", ((None, "none"), (Lines, "lines"), (Markers, "markers"), (Text, "text"), \
+		    (LinesAndMarkers, "lines+markers"), (MarkersAndText, "markers+text"), \
+		    (LinesAndText, "lines+text"), (All, "lines+markers+text")))
+
 #define PLY_ENUM_SHOW_TICK_PREFIX \
     (ShowTickPrefix, "showtickprefix", ((All, "all"), (First, "first"), (Last, "last"), \
 					(None, "none")))
@@ -158,6 +163,7 @@ PLY_DEFINE_ENUM(PLY_ENUM_GROUP_NORM)
 PLY_DEFINE_ENUM(PLY_ENUM_HOVER_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_LAYER)
 PLY_DEFINE_ENUM(PLY_ENUM_MIRROR)
+PLY_DEFINE_ENUM(PLY_ENUM_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_ORIENTATION)
 PLY_DEFINE_ENUM(PLY_ENUM_PATTERN)
 PLY_DEFINE_ENUM(PLY_ENUM_PLOT_VISIBLE)

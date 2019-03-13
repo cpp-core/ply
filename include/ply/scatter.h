@@ -11,9 +11,9 @@
 namespace ply
 {
 
-struct Scatter : Members<Scatter,Color,GroupNorm,Line,Name,Orientation,PlotVisible>, Trace
+struct Scatter : Members<Scatter,Color,GroupNorm,Line,Mode,Name,Orientation,PlotVisible>, Trace
 {
-    using MembersBase = Members<Scatter,Color,GroupNorm,Line,Name,Orientation,PlotVisible>;
+    using MembersBase = Members<Scatter,Color,GroupNorm,Line,Mode,Name,Orientation,PlotVisible>;
     using MembersBase::MembersBase;
     
     Scatter() { json = base(); }

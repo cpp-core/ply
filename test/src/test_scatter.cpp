@@ -125,6 +125,13 @@ TEST(Ply, ScatterText)
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
+TEST(Ply, ScatterMode)
+{
+    core::json expected = {{ "type", "scatter" }, { "mode", "markers" }};
+    auto actual = Scatter(Mode::Markers).json;
+    EXPECT_EQ(actual.dump(), expected.dump());
+}
+
 TEST(Ply, ScatterLine)
 {
     core::json expected = {{ "type", "scatter" }, { "line", {{ "width", 2 }}}};

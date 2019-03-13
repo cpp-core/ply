@@ -14,6 +14,9 @@ namespace ply
 
 struct Layout : Members<Layout,Font,Margin,Title,XAxis,YAxis>, virtual Data
 {
+    using MembersBase = Members<Layout,Font,Margin,Title,XAxis,YAxis>;
+    using MembersBase::MembersBase;
+    
     Layout& width(real px) { json["width"] = px; return *this; }
     Layout& height(real px) { json["height"] = px; return *this; }
     Layout& autosize(bool autosize) { json["autosize"] = autosize; return *this; }
