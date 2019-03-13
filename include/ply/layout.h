@@ -2,6 +2,7 @@
 //
 
 #pragma once
+#include "ply/xaxis.h"
 #include "ply/font.h"
 #include "ply/margin.h"
 #include "ply/title.h"
@@ -10,7 +11,7 @@
 namespace ply
 {
 
-struct Layout : Member<Layout,list<Font,Margin,Title>>, virtual Data
+struct Layout : Members<Layout,Font,Margin,Title,XAxis>, virtual Data
 {
     Layout& width(real px) { json["width"] = px; return *this; }
     Layout& height(real px) { json["height"] = px; return *this; }

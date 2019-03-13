@@ -9,7 +9,7 @@
 namespace ply
 {
 
-struct Scatter : Member<Scatter,list<Color,GroupNorm,Line,Orientation,Visible>>, Trace
+struct Scatter : Members<Scatter,Color,GroupNorm,Line,Orientation,Visible>, Trace
 {
     Scatter() { json = {{ "type", "scatter" }}; }
 

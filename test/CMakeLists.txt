@@ -13,6 +13,7 @@ set(TESTS
   scatter
   title
   xaxis
+  yaxis
   )
 
 foreach(NAME ${TESTS})

@@ -16,7 +16,7 @@ struct Text : virtual Data
     D& text(string_view text) { json["text"] = text; return *static_cast<D*>(this); }
 };
 
-struct Title : Member<Title,list<Font,Pad,XAnchor,YAnchor>>, Text<Title>, virtual Data
+struct Title : Members<Title,Font,Pad,XAnchor,YAnchor>, Text<Title>, virtual Data
 {
     Title() { json = core::json::object(); }
     Title& xRef(Ref xref) { json["xref"] = as_json(xref); return *this; }

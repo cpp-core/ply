@@ -9,13 +9,13 @@
 namespace ply
 {
 
-struct SliderYAxis : Member<SliderYAxis, list<SliderRangeMode>>, Range<SliderYAxis>, virtual Data
+struct SliderYAxis : Members<SliderYAxis, SliderRangeMode>, Range<SliderYAxis>, virtual Data
 { };
 
 template<> inline string as_string<SliderYAxis>() { return "yaxis"; }
 inline core::json as_json(const SliderYAxis& axis) { return axis.json; }
 
-struct RangeSlider : Member<RangeSlider,list<SliderYAxis>>, Range<RangeSlider>, virtual Data
+struct RangeSlider : Members<RangeSlider,SliderYAxis>, Range<RangeSlider>, virtual Data
 {
     RangeSlider() { json = core::json::object(); }
     RangeSlider& bgcolor(const Color& c) { json["bgcolor"] = as_json(c); return *this; }

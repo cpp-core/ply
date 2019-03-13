@@ -9,7 +9,7 @@
 namespace ply
 {
 
-struct OHLC : Member<OHLC,list<Color,Line>>, Trace
+struct OHLC : Members<OHLC,Color,Line>, Trace
 {
     OHLC() { json = {{ "type", "ohlc" }}; }
 

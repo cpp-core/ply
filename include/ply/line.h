@@ -9,7 +9,7 @@
 namespace ply
 {
 
-struct Line : Member<Line,list<Color,Dash,Shape>>, virtual Data
+struct Line : Members<Line,Color,Dash,Shape>, virtual Data
 {
     Line& smoothing(real s) { json["smoothing"] = s; return *this; }
     Line& simplify(bool b) { json["simplify"] = b; return *this; }

@@ -7,7 +7,7 @@
 namespace ply
 {
 
-struct Margin : Member<Margin,list<Pad>>, virtual Data
+struct Margin : Members<Margin,Pad>, virtual Data
 {
     template<Arithmetic T> Margin& t(T px) { json["t"] = px; return *this; }
     template<Arithmetic T> Margin& r(T px) { json["r"] = px; return *this; }

@@ -4,6 +4,7 @@
 #pragma once
 #include "core/common.h"
 #include "core/json.h"
+#include "core/mp/append.h"
 #include "core/mp/contains.h"
 
 namespace ply
@@ -11,6 +12,9 @@ namespace ply
 
 template<class... Ts> 
 using list = core::mp::list<Ts...>;
+
+template<class... Ts>
+using append_t = core::mp::append_t<Ts...>;
 
 template<class T> string as_string();
 
@@ -23,11 +27,11 @@ struct Data
 struct Trace : virtual Data { };
 using Traces = vector<Trace>;
 
-template<class D, class L>
-struct Member : virtual Data
+template<class D, class... Ts>
+struct Members : virtual Data
 {
     template<class T>
-    requires core::mp::contains_v<T,L>
+    requires core::mp::is_member_v<T,Ts...>
     D& operator()(const T& obj)
     {
 	json[as_string<T>()] = as_json(obj);
