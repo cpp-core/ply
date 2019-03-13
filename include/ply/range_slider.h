@@ -10,14 +10,19 @@ namespace ply
 {
 
 struct SliderYAxis : Members<SliderYAxis, SliderRangeMode>, Range<SliderYAxis>, virtual Data
-{ };
+{
+    using MembersBase = Members<SliderYAxis, SliderRangeMode>;
+    using MembersBase::MembersBase;
+};
 
 template<> inline string as_string<SliderYAxis>() { return "yaxis"; }
 inline core::json as_json(const SliderYAxis& axis) { return axis.json; }
 
-struct RangeSlider : Members<RangeSlider,SliderYAxis>, Range<RangeSlider>, virtual Data
+struct RangeSlider : Members<RangeSlider,SliderYAxis,Visible>, Range<RangeSlider>, virtual Data
 {
-    RangeSlider() { json = core::json::object(); }
+    using MembersBase = Members<RangeSlider,SliderYAxis,Visible>;
+    using MembersBase::MembersBase;
+    
     RangeSlider& bgcolor(const Color& c) { json["bgcolor"] = as_json(c); return *this; }
     RangeSlider& bordercolor(const Color& c) { json["bordercolor"] = as_json(c); return *this; }
     RangeSlider& borderwidth(int w) { json["borderwidth"] = w; return *this; }

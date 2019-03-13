@@ -11,6 +11,9 @@ namespace ply
 
 struct Line : Members<Line,Color,Dash,Shape>, virtual Data
 {
+    using MembersBase = Members<Line,Color,Dash,Shape>;
+    using MembersBase::MembersBase;
+    
     Line& smoothing(real s) { json["smoothing"] = s; return *this; }
     Line& simplify(bool b) { json["simplify"] = b; return *this; }
 

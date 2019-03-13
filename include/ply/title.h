@@ -18,7 +18,9 @@ struct Text : virtual Data
 
 struct Title : Members<Title,Font,Pad,XAnchor,YAnchor>, Text<Title>, virtual Data
 {
-    Title() { json = core::json::object(); }
+    Title() { }
+    Title(string_view text) { json["text"] = text; }
+    
     Title& xRef(Ref xref) { json["xref"] = as_json(xref); return *this; }
     Title& yRef(Ref yref) { json["yref"] = as_json(yref); return *this; }
     template<Arithmetic T> Title& x(T x) { json["x"] = x; return *this; }

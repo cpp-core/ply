@@ -9,10 +9,14 @@
 namespace ply
 {
 
-struct Scatter : Members<Scatter,Color,GroupNorm,Line,Orientation,Visible>, Trace
+struct Scatter : Members<Scatter,Color,GroupNorm,Line,Orientation,PlotVisible>, Trace
 {
-    Scatter() { json = {{ "type", "scatter" }}; }
-
+    using MembersBase = Members<Scatter,Color,GroupNorm,Line,Orientation,PlotVisible>;
+    using MembersBase::MembersBase;
+    
+    Scatter() { json = base(); }
+    static core::json base() { return {{ "type", "scatter" }}; }
+    
     Scatter& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     Scatter& opacity(real alpha) { json["opacity"] = alpha; return *this; }

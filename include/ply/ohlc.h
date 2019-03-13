@@ -11,7 +11,11 @@ namespace ply
 
 struct OHLC : Members<OHLC,Color,Line>, Trace
 {
-    OHLC() { json = {{ "type", "ohlc" }}; }
+    using MembersBase = Members<OHLC,Color,Line>;
+    using MembersBase::MembersBase;
+    
+    OHLC() { json = base(); }
+    static core::json base() { return {{ "type", "ohlc" }}; }
 
     OHLC& visible(bool b) { json["visible"] = b; return *this; }
     OHLC& visible_legend() { json["visible"] = "legendonly"; return *this; }

@@ -67,6 +67,9 @@
 #define PLY_ENUM_PATTERN \
     (Pattern, "pattern", ((Independent, "independent"), (Coupled, "coupled")))
     
+#define PLY_ENUM_PLOT_VISIBLE \
+    (PlotVisible, "visible", ((True, true), (False, false), (LegendOnly, "legendonly")))
+
 #define PLY_ENUM_RANGE_MODE \
     (RangeMode, "rangemode", ((Normal,"normal"), (ToZero,"tozero"), (NonNegative,"nonnegative")))
 
@@ -122,7 +125,7 @@
     (TickMode, "tickmode", ((Auto, "auto"), (Linear, "linear"), (Array, "array")))
 
 #define PLY_ENUM_VISIBLE \
-    (Visible, "visible", ((True, true), (False, false), (LegendOnly, "legendonly")))
+    (Visible, "visible", ((True, true), (False, false)))
 
 #define PLY_ENUM_XANCHOR \
     (XAnchor, "xanchor", ((Auto, "auto"), (Left, "left"), (Center, "center"), (Right, "right")))
@@ -153,6 +156,7 @@ PLY_DEFINE_ENUM(PLY_ENUM_LAYER)
 PLY_DEFINE_ENUM(PLY_ENUM_MIRROR)
 PLY_DEFINE_ENUM(PLY_ENUM_ORIENTATION)
 PLY_DEFINE_ENUM(PLY_ENUM_PATTERN)
+PLY_DEFINE_ENUM(PLY_ENUM_PLOT_VISIBLE)
 PLY_DEFINE_ENUM(PLY_ENUM_RANGE_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_REF)
 PLY_DEFINE_ENUM(PLY_ENUM_ROW_ORDER)

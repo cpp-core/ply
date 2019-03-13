@@ -20,10 +20,10 @@ TEST(Ply, ScatterDefault)
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
-TEST(Ply, ScatterVisible)
+TEST(Ply, ScatterPlotVisible)
 {
     core::json expected = {{ "type", "scatter" }, { "visible", false }};
-    auto actual = Scatter()(Visible::False).json;
+    auto actual = Scatter()(PlotVisible::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

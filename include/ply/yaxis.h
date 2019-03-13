@@ -8,7 +8,10 @@ namespace ply
 {
 
 struct YAxis : Axis<YAxis>, Axis<YAxis>::Members<>, virtual Data
-{ };
+{
+    using MembersBase = Axis<YAxis>::Members<>;
+    using MembersBase::MembersBase;
+};
 
 template<> inline string as_string<YAxis>() { return "yaxis"; }
 inline core::json as_json(const YAxis& axis) { return axis.json; }

@@ -30,11 +30,24 @@ using Traces = vector<Trace>;
 template<class D, class... Ts>
 struct Members : virtual Data
 {
-    template<class T>
-    requires core::mp::is_member_v<T,Ts...>
-    D& operator()(const T& obj)
+    static core::json base() { return core::json::object(); }
+
+    Members()
+    { }
+
+    template<class... Us>
+    requires (core::mp::is_member_v<Us,Ts...> && ...)
+    Members(const Us&... obj)
     {
-	json[as_string<T>()] = as_json(obj);
+	json = D::base();
+	((json[as_string<Us>()] = as_json(obj)), ...);
+    }
+
+    template<class... Us>
+    requires (core::mp::is_member_v<Us,Ts...> && ...)
+    D& operator()(const Us&... obj)
+    {
+	((json[as_string<Us>()] = as_json(obj)), ...);
 	return *static_cast<D*>(this);
     }
 };
