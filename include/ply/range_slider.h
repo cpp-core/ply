@@ -5,22 +5,23 @@
 #include "ply/color.h"
 #include "ply/enum.h"
 #include "ply/members.h"
+#include "ply/range.h"
 
 namespace ply
 {
 
-struct SliderYAxis : Members<SliderYAxis, SliderRangeMode>, Range<SliderYAxis>, virtual Data
+struct SliderYAxis : Members<SliderYAxis,Range,SliderRangeMode>, virtual Data
 {
-    using MembersBase = Members<SliderYAxis, SliderRangeMode>;
+    using MembersBase = Members<SliderYAxis,Range,SliderRangeMode>;
     using MembersBase::MembersBase;
 };
 
 template<> inline string as_string<SliderYAxis>() { return "yaxis"; }
 inline core::json as_json(const SliderYAxis& axis) { return axis.json; }
 
-struct RangeSlider : Members<RangeSlider,SliderYAxis,Visible>, Range<RangeSlider>, virtual Data
+struct RangeSlider : Members<RangeSlider,Range,SliderYAxis,Visible>, virtual Data
 {
-    using MembersBase = Members<RangeSlider,SliderYAxis,Visible>;
+    using MembersBase = Members<RangeSlider,Range,SliderYAxis,Visible>;
     using MembersBase::MembersBase;
     
     RangeSlider& bgcolor(const Color& c) { json["bgcolor"] = as_json(c); return *this; }
@@ -28,7 +29,6 @@ struct RangeSlider : Members<RangeSlider,SliderYAxis,Visible>, Range<RangeSlider
     RangeSlider& borderwidth(int w) { json["borderwidth"] = w; return *this; }
     RangeSlider& autorange(bool b) { json["autorange"] = b; return *this; }
     template<Arithmetic T> RangeSlider& thickness(T x) { json["thickness"] = x; return *this; }
-    RangeSlider& visible(bool b) { json["visible"] = b; return *this; }
 };
 
 template<> inline string as_string<RangeSlider>() { return "rangeslider"; }

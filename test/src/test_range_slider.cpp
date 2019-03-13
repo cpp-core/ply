@@ -46,7 +46,7 @@ TEST(Ply, RangeSliderAutoRange)
 TEST(Ply, RangeSliderRange)
 {
     core::json expected = {{ "range", {1,2,3} }};
-    auto actual = RangeSlider().range(ints{1,2,3}).json;
+    auto actual = RangeSlider(Range(ints{1,2,3})).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -60,7 +60,7 @@ TEST(Ply, RangeSliderBorderThickness)
 TEST(Ply, RangeSliderVisible)
 {
     core::json expected = {{ "visible", false }};
-    auto actual = RangeSlider().visible(false).json;
+    auto actual = RangeSlider(Visible::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

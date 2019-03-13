@@ -19,12 +19,5 @@ struct Data
 struct Trace : virtual Data { };
 using Traces = vector<Trace>;
 
-template<class Derived>
-struct Range : virtual Data
-{
-    template<class C>
-    Derived& range(const C& data) { json["range"] = data; return *static_cast<Derived*>(this); }
-};
-
 }; // ply
 

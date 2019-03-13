@@ -9,16 +9,14 @@
 namespace ply
 {
 
-struct OHLC : Members<OHLC,Color,Line>, Trace
+struct OHLC : Members<OHLC,Color,Line,PlotVisible>, Trace
 {
-    using MembersBase = Members<OHLC,Color,Line>;
+    using MembersBase = Members<OHLC,Color,Line,PlotVisible>;
     using MembersBase::MembersBase;
     
     OHLC() { json = base(); }
     static core::json base() { return {{ "type", "ohlc" }}; }
 
-    OHLC& visible(bool b) { json["visible"] = b; return *this; }
-    OHLC& visible_legend() { json["visible"] = "legendonly"; return *this; }
     OHLC& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     OHLC& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     OHLC& opacity(real alpha) { json["opacity"] = alpha; return *this; }
