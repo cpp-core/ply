@@ -5,13 +5,14 @@
 #include "ply/enum.h"
 #include "ply/line.h"
 #include "ply/members.h"
+#include "ply/name.h"
 
 namespace ply
 {
 
-struct OHLC : Members<OHLC,Color,Line,PlotVisible>, Trace
+struct OHLC : Members<OHLC,Color,Line,Name,PlotVisible>, Trace
 {
-    using MembersBase = Members<OHLC,Color,Line,PlotVisible>;
+    using MembersBase = Members<OHLC,Color,Line,Name,PlotVisible>;
     using MembersBase::MembersBase;
     
     OHLC() { json = base(); }
@@ -20,7 +21,6 @@ struct OHLC : Members<OHLC,Color,Line,PlotVisible>, Trace
     OHLC& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     OHLC& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     OHLC& opacity(real alpha) { json["opacity"] = alpha; return *this; }
-    OHLC& name(string_view name) { json["name"] = name; return *this; }
     OHLC& stackgroup(string_view name) { json["stackgroup"] = name; return *this; }
     OHLC& text(string_view str) { json["text"] = str; return *this; }
 

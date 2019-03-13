@@ -32,7 +32,7 @@ TEST(Ply, YAxisColor)
 TEST(Ply, YAxisTitle)
 {
     core::json expected = {{ "title", {{ "text", "abc" }}}};
-    auto actual = YAxis(Title().text("abc")).json;
+    auto actual = YAxis(Title(Text("abc"))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -67,7 +67,7 @@ TEST(Ply, YAxisRange)
 TEST(Ply, YAxisFixedRange)
 {
     core::json expected = {{ "fixedrange", false }};
-    auto actual = YAxis().fixedrange(false).json;
+    auto actual = YAxis(FixedRange::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

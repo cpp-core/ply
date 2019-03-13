@@ -51,7 +51,7 @@ TEST(Ply, OhlcOpacity)
 TEST(Ply, OhlcName)
 {
     core::json expected = {{ "type", "ohlc" }, { "name", "abc" }};
-    auto actual = OHLC().name("abc").json;
+    auto actual = OHLC(Name("abc")).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -100,14 +100,14 @@ TEST(Ply, OhlcText)
 TEST(Ply, OhlcLine)
 {
     core::json expected = {{ "type", "ohlc" }, { "line", {{ "width", 2 }}}};
-    auto actual = OHLC()(Line().width(2)).json;
+    auto actual = OHLC(Line().width(2)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, OhlcColor)
 {
     core::json expected = {{ "type", "ohlc" }, { "color", "rgb(1,2,3)" }};
-    auto actual = OHLC()(Color().rgb(1,2,3)).json;
+    auto actual = OHLC(Color().rgb(1,2,3)).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

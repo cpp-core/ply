@@ -32,7 +32,7 @@ TEST(Ply, XAxisColor)
 TEST(Ply, XAxisTitle)
 {
     core::json expected = {{ "title", {{ "text", "abc" }}}};
-    auto actual = XAxis(Title().text("abc")).json;
+    auto actual = XAxis(Title(Text("abc"))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
@@ -67,7 +67,7 @@ TEST(Ply, XAxisRange)
 TEST(Ply, XAxisFixedRange)
 {
     core::json expected = {{ "fixedrange", false }};
-    auto actual = XAxis().fixedrange(false).json;
+    auto actual = XAxis(FixedRange::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

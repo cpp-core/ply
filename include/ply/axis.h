@@ -18,11 +18,9 @@ struct Axis : virtual Data
     using Members = ply::Members
 	<D,
 	 AutoRange, AxisType, Color, Constrain, ConstrainToward, Layer,
-	 ExponentFormat, Mirror, Range, RangeMode, Side, ShowExponent, ShowTickPrefix,
-	 ShowTickSuffix, TickMode, Ticks, TicksOn, Title, Visible,
+	 ExponentFormat, FixedRange, Mirror, Range, RangeMode, Side, ShowExponent,
+	 ShowTickPrefix, ShowTickSuffix, TickMode, Ticks, TicksOn, Title, Visible,
 	 Ts...>;
-
-    Axis& fixedrange(bool b) { json["fixedrange"] = b; return *this; }
 };
 
 }; // ply

@@ -51,7 +51,7 @@ TEST(Ply, ScatterOpacity)
 TEST(Ply, ScatterName)
 {
     core::json expected = {{ "type", "scatter" }, { "name", "abc" }};
-    auto actual = Scatter().name("abc").json;
+    auto actual = Scatter(Name("abc")).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

@@ -48,6 +48,9 @@
     (ExponentFormat, "exponentformat", ((None, "none"), (e, "e"), (E, "E"), (Power, "power"), \
 					(SI, "si"), (B, "B")))
 
+#define PLY_ENUM_FIXED_RANGE \
+    (FixedRange, "fixedrange", ((True, true), (False, false)))
+
 #define PLY_ENUM_GROUP_NORM \
     (GroupNorm, "groupnorm", ((None, ""), (Fraction, "fraction"), (Percent, "percent")))
 
@@ -150,6 +153,7 @@ PLY_DEFINE_ENUM(PLY_ENUM_CONSTRAIN_TOWARD)
 PLY_DEFINE_ENUM(PLY_ENUM_DASH)
 PLY_DEFINE_ENUM(PLY_ENUM_DRAG_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_EXPONENT_FORMAT)
+PLY_DEFINE_ENUM(PLY_ENUM_FIXED_RANGE)
 PLY_DEFINE_ENUM(PLY_ENUM_GROUP_NORM)
 PLY_DEFINE_ENUM(PLY_ENUM_HOVER_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_LAYER)

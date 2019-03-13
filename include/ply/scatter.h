@@ -6,13 +6,14 @@
 #include "ply/color.h"
 #include "ply/line.h"
 #include "ply/members.h"
+#include "ply/name.h"
 
 namespace ply
 {
 
-struct Scatter : Members<Scatter,Color,GroupNorm,Line,Orientation,PlotVisible>, Trace
+struct Scatter : Members<Scatter,Color,GroupNorm,Line,Name,Orientation,PlotVisible>, Trace
 {
-    using MembersBase = Members<Scatter,Color,GroupNorm,Line,Orientation,PlotVisible>;
+    using MembersBase = Members<Scatter,Color,GroupNorm,Line,Name,Orientation,PlotVisible>;
     using MembersBase::MembersBase;
     
     Scatter() { json = base(); }
@@ -21,7 +22,6 @@ struct Scatter : Members<Scatter,Color,GroupNorm,Line,Orientation,PlotVisible>, 
     Scatter& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     Scatter& opacity(real alpha) { json["opacity"] = alpha; return *this; }
-    Scatter& name(string_view name) { json["name"] = name; return *this; }
     Scatter& stackgroup(string_view name) { json["stackgroup"] = name; return *this; }
 
     template<class C> Scatter& x(const C& data) { json["x"] = data; return *this; }
