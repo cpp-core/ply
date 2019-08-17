@@ -11,6 +11,7 @@ set(TESTS
   pad
   range_slider
   scatter
+  scatter3d
   title
   xaxis
   yaxis
