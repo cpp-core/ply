@@ -5,6 +5,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 set(TESTS
   color
   enum
+  layout
   line
   margin
   ohlc
