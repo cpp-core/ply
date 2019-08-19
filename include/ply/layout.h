@@ -5,6 +5,7 @@
 #include "ply/font.h"
 #include "ply/margin.h"
 #include "ply/members.h"
+#include "ply/scene.h"
 #include "ply/title.h"
 #include "ply/xaxis.h"
 #include "ply/yaxis.h"
@@ -12,9 +13,9 @@
 namespace ply
 {
 
-struct Layout : Members<Layout,Font,Margin,Title,XAxis,YAxis>, virtual Data
+struct Layout : Members<Layout,Font,Margin,Scene,Title,XAxis,YAxis>, virtual Data
 {
-    using MembersBase = Members<Layout,Font,Margin,Title,XAxis,YAxis>;
+    using MembersBase = Members<Layout,Font,Margin,Scene,Title,XAxis,YAxis>;
     using MembersBase::MembersBase;
     
     Layout& width(real px) { json["width"] = px; return *this; }

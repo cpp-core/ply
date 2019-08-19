@@ -12,9 +12,11 @@ set(TESTS
   range_slider
   scatter
   scatter3d
+  scene
   title
   xaxis
   yaxis
+  zaxis
   )
 
 foreach(NAME ${TESTS})
