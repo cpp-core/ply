@@ -10,5 +10,6 @@
 #include "ply/line.h"
 #include "ply/ohlc.h"
 #include "ply/scatter.h"
+#include "ply/scatter3d.h"
 #include "ply/xaxis.h"
 #include "ply/yaxis.h"
