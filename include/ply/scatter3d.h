@@ -5,15 +5,16 @@
 #include "ply/enum.h"
 #include "ply/color.h"
 #include "ply/line.h"
+#include "ply/marker.h"
 #include "ply/members.h"
 #include "ply/name.h"
 
 namespace ply
 {
 
-struct Scatter3d : Members<Scatter3d,Color,GroupNorm,Line,Mode,Name,Orientation,PlotVisible>, Trace
+struct Scatter3d : Members<Scatter3d,Color,GroupNorm,Line,Marker,Mode,Name,Orientation,PlotVisible>, Trace
 {
-    using MembersBase = Members<Scatter3d,Color,GroupNorm,Line,Mode,Name,Orientation,PlotVisible>;
+    using MembersBase = Members<Scatter3d,Color,GroupNorm,Line,Marker,Mode,Name,Orientation,PlotVisible>;
     using MembersBase::MembersBase;
     
     Scatter3d() { json = base(); }

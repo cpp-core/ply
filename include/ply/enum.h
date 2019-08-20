@@ -116,8 +116,13 @@
     (Step, "step", ((Month, "month"), (Year, "year"), (Day, "day"), (Hour, "hour"), \
 		    (Minute, "minute"), (Second, "second"), (All, "all")))
 
-#define PLY_ENUM_STEP_MODE \
+#define PLY_ENUM_STEP_MODE						\
     (StepMode, "stepmode", ((Backward, "backward"), (ToDate, "todate")))
+
+#define PLY_ENUM_SYMBOL							\
+    (Symbol, "symbol", ((Circle, "circle"), (CircleOpen, "circle-open"), (Square, "square"), \
+			(SquareOpen, "square-open"), (Diamond, "diamond"), \
+			(DiamondOpen, "diamond-open"), (Cross, "cross"), (X, "x")))
 
 #define PLY_ENUM_TITLE_TYPE \
     (TitleType, "type", ((Dash, "-"), (Linear, "linear"), (Log, "log"), (Date, "date"), \
@@ -179,6 +184,7 @@ PLY_DEFINE_ENUM(PLY_ENUM_SIDE)
 PLY_DEFINE_ENUM(PLY_ENUM_SLIDER_RANGE_MODE)
 PLY_DEFINE_ENUM(PLY_ENUM_STEP)
 PLY_DEFINE_ENUM(PLY_ENUM_STEP_MODE)
+PLY_DEFINE_ENUM(PLY_ENUM_SYMBOL)
 PLY_DEFINE_ENUM(PLY_ENUM_TICKS)
 PLY_DEFINE_ENUM(PLY_ENUM_TICKS_ON)
 PLY_DEFINE_ENUM(PLY_ENUM_TICK_MODE)

@@ -8,6 +8,7 @@ set(TESTS
   layout
   line
   margin
+  marker
   ohlc
   pad
   range_slider

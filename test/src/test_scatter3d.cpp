@@ -48,6 +48,13 @@ TEST(Ply, Scatter3dOpacity)
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
+TEST(Ply, ScatterMarker)
+{
+    core::json expected = {{ "marker", {{ "size", 2 }}}, { "type", "scatter3d" }};
+    auto actual = Scatter3d(Marker().size(2)).json;
+    EXPECT_EQ(actual.dump(), expected.dump());
+}
+
 TEST(Ply, Scatter3dName)
 {
     core::json expected = {{ "type", "scatter3d" }, { "name", "abc" }};
