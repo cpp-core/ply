@@ -52,7 +52,11 @@ endforeach()
 
 add_library(ply ${FILES})
 target_link_libraries(ply core)
-set_property(TARGET ply PROPERTY ARCHIVE_OUTPUT_DIRECTORY ../lib)
+set_target_properties(ply PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+  LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+  ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+  )
 target_include_directories(ply PUBLIC include)
 
 if(PLY_TOOLS)
