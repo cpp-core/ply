@@ -1,6 +1,7 @@
 // Copyright (C) 2019 by Mark Melton
 //
 
+#include <stdio.h>
 #include <regex>
 #include "ply/generate.h"
 #include "core/guid.h"
