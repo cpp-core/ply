@@ -13,7 +13,7 @@ struct Name : virtual Data
 };
 
 template<> inline string as_string<Name>() { return "name"; }
-inline core::json as_json(const Name& name) { return name.json; }
+inline nlj::json as_json(const Name& name) { return name.json; }
 
 }; // ply
 

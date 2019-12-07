@@ -5,9 +5,6 @@
 
 int tool_main(int argc, const char *argv[])
 {
-    core::POpt opts;
-    opts.process(argc, argv);
-
     return 0;
 }
 

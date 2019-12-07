@@ -17,7 +17,7 @@ struct SliderYAxis : Members<SliderYAxis,Range,SliderRangeMode>, virtual Data
 };
 
 template<> inline string as_string<SliderYAxis>() { return "yaxis"; }
-inline core::json as_json(const SliderYAxis& axis) { return axis.json; }
+inline nlj::json as_json(const SliderYAxis& axis) { return axis.json; }
 
 struct RangeSlider : Members<RangeSlider,Range,SliderYAxis,Visible>, virtual Data
 {
@@ -32,7 +32,7 @@ struct RangeSlider : Members<RangeSlider,Range,SliderYAxis,Visible>, virtual Dat
 };
 
 template<> inline string as_string<RangeSlider>() { return "rangeslider"; }
-inline core::json as_json(const RangeSlider& slider) { return slider.json; }
+inline nlj::json as_json(const RangeSlider& slider) { return slider.json; }
 
 }; // ply
 

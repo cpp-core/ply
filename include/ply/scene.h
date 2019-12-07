@@ -16,7 +16,7 @@ struct Scene : Members<Scene,XAxis,YAxis,ZAxis>, virtual Data
 };
 
 template<> inline string as_string<Scene>() { return "scene"; }
-inline core::json as_json(const Scene& scene) { return scene.json; }
+inline nlj::json as_json(const Scene& scene) { return scene.json; }
 
 }; // ply
 

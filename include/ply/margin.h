@@ -21,7 +21,7 @@ struct Margin : Members<Margin,Pad>, virtual Data
 };
 
 template<> inline string as_string<Margin>() { return "margin"; }
-inline core::json as_json(const Margin& margin) { return margin.json; }
+inline nlj::json as_json(const Margin& margin) { return margin.json; }
 
 }; // ply
 

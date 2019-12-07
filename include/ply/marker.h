@@ -20,7 +20,7 @@ struct Marker : Members<Marker,Color,Line,Symbol>, virtual Data
 };
 
 template<> inline string as_string<Marker>() { return "marker"; }
-inline core::json as_json(const Marker& marker) { return marker.json; }
+inline nlj::json as_json(const Marker& marker) { return marker.json; }
 
 }; // ply
 

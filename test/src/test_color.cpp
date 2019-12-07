@@ -6,21 +6,21 @@
 
 TEST(Ply, Color)
 {
-    auto expected = core::json::object();
+    auto expected = nlj::json::object();
     auto actual = ply::Color().json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ColorRgb)
 {
-    core::json expected = "rgb(1,2,3)";
+    nlj::json expected = "rgb(1,2,3)";
     auto actual = ply::Color().rgb(1,2,3).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ColorRgba)
 {
-    core::json expected = "rgba(1,2,3,0.5)";
+    nlj::json expected = "rgba(1,2,3,0.5)";
     auto actual = ply::Color().rgba(1,2,3,0.5).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }

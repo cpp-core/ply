@@ -15,7 +15,7 @@ struct ZAxis : Axis<ZAxis>, Axis<ZAxis>::Members<RangeSlider>, virtual Data
 };
 
 template<> inline string as_string<ZAxis>() { return "zaxis"; }
-inline core::json as_json(const ZAxis& axis) { return axis.json; }
+inline nlj::json as_json(const ZAxis& axis) { return axis.json; }
 
 }; // ply
 

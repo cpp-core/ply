@@ -3,7 +3,7 @@
 
 #pragma once
 #include "core/common.h"
-#include "core/json.h"
+#include "core/json/nljson.h"
 
 namespace ply
 {
@@ -12,8 +12,8 @@ template<class T> string as_string();
 
 struct Data
 {
-    Data() { json = core::json::object(); }
-    core::json json;
+    Data() { json = nlj::json::object(); }
+    nlj::json json;
 };
 
 struct Trace : virtual Data { };

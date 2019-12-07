@@ -16,7 +16,7 @@ struct Pad : virtual Data
 };
 
 template<> inline string as_string<Pad>() { return "pad"; }
-inline core::json as_json(const Pad& pad) { return pad.json; }
+inline nlj::json as_json(const Pad& pad) { return pad.json; }
 
 }; // ply
 

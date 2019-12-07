@@ -3,20 +3,24 @@
 
 #pragma once
 #include "ply/base.h"
-#include "core/pp.h"
+#include "core/pp/eval.h"
+#include "core/pp/map.h"
+#include "core/pp/seq.h"
 
-#define PLY_ENUM_CASE(name, seq) case name::HEAD_SEQ(seq): return SECOND_SEQ(seq);
+#define PLY_ENUM_CASE(name, seq) case name::CORE_PP_HEAD_SEQ(seq): return CORE_PP_SECOND_SEQ(seq);
 
-#define PLY_ENUM_DECL(name, jname, seq)						\
+#define PLY_ENUM_DECL(name, jname, seq)					\
     namespace ply {							\
-    enum class name { MAP_INFIX_SEQ(HEAD_SEQ, COMMA, seq) };		\
+    enum class name { CORE_PP_MAP_INFIX_SEQ(CORE_PP_HEAD_SEQ, CORE_PP_COMMA, seq) }; \
     template<> inline string as_string<name>() { return jname; }	\
-    inline core::json as_json(name o) {					\
-    	switch(o) { MAP_WITH_SEQ(PLY_ENUM_CASE,name,seq) }		\
+    inline nlj::json as_json(name o) {					\
+    	switch(o) { CORE_PP_MAP_WITH_SEQ(PLY_ENUM_CASE,name,seq) }	\
      	throw std::runtime_error(#name "::as_json: unknown enum value"); \
     }}; // ply
 
-#define PLY_DEFINE_ENUM(seq) EVAL(PLY_ENUM_DECL(HEAD_SEQ(seq), SECOND_SEQ(seq), THIRD_SEQ(seq)))
+#define PLY_DEFINE_ENUM(seq) \
+    CORE_PP_EVAL(PLY_ENUM_DECL(CORE_PP_HEAD_SEQ(seq), CORE_PP_SECOND_SEQ(seq), \
+			       CORE_PP_THIRD_SEQ(seq)))
 
 #define PLY_ENUM_AUTO_RANGE \
     (AutoRange, "autorange", ((True, true), (False, false), (Reversed, "reversed")))

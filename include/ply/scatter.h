@@ -17,7 +17,7 @@ struct Scatter : Members<Scatter,Color,GroupNorm,Line,Mode,Name,Orientation,Plot
     using MembersBase::MembersBase;
     
     Scatter() { json = base(); }
-    static core::json base() { return {{ "type", "scatter" }}; }
+    static nlj::json base() { return {{ "type", "scatter" }}; }
     
     Scatter& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }

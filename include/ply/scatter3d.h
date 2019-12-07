@@ -18,7 +18,7 @@ struct Scatter3d : Members<Scatter3d,Color,GroupNorm,Line,Marker,Mode,Name,Orien
     using MembersBase::MembersBase;
     
     Scatter3d() { json = base(); }
-    static core::json base() { return {{ "type", "scatter3d" }}; }
+    static nlj::json base() { return {{ "type", "scatter3d" }}; }
     
     Scatter3d& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter3d& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }

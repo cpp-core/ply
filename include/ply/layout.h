@@ -28,7 +28,7 @@ struct Layout : Members<Layout,Font,Margin,Scene,Title,XAxis,YAxis>, virtual Dat
 };
 
 template<> inline string as_string<Layout>() { return "layout"; }
-inline core::json as_json(const Layout& layout) { return layout.json; }
+inline nlj::json as_json(const Layout& layout) { return layout.json; }
 
 }; // ply
 

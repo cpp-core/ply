@@ -16,7 +16,7 @@ struct OHLC : Members<OHLC,Color,Line,Name,PlotVisible>, Trace
     using MembersBase::MembersBase;
     
     OHLC() { json = base(); }
-    static core::json base() { return {{ "type", "ohlc" }}; }
+    static nlj::json base() { return {{ "type", "ohlc" }}; }
 
     OHLC& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     OHLC& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }

@@ -13,7 +13,7 @@ struct Text : virtual Data
 };
 
 template<> inline string as_string<Text>() { return "text"; }
-inline core::json as_json(const Text& text) { return text.json; }
+inline nlj::json as_json(const Text& text) { return text.json; }
 
 }; // ply
 

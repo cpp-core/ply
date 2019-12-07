@@ -22,7 +22,7 @@ struct Line : Members<Line,Color,Dash,Shape>, virtual Data
 };
 
 template<> inline string as_string<Line>() { return "line"; }
-inline core::json as_json(const Line& line) { return line.json; }
+inline nlj::json as_json(const Line& line) { return line.json; }
 
 }; // ply
 

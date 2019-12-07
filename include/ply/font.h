@@ -30,7 +30,7 @@ struct Font : virtual Data
 };
 
 template<> inline string as_string<Font>() { return "font"; }
-inline core::json as_json(const Font& font) { return font.json; }
+inline nlj::json as_json(const Font& font) { return font.json; }
 
 }; // ply
 

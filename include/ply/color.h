@@ -48,7 +48,7 @@ struct Color : virtual Data
 };
 
 template<> inline string as_string<Color>() { return "color"; }
-inline core::json as_json(const Color& c) { return c.json; }
+inline nlj::json as_json(const Color& c) { return c.json; }
 
 }; // ply
 

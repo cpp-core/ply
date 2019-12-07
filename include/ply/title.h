@@ -23,7 +23,7 @@ struct Title : Members<Title,Font,Pad,Text,XAnchor,YAnchor>, virtual Data
 };
 
 template<> inline string as_string<Title>() { return "title"; }
-inline core::json as_json(const Title& title) { return title.json; }
+inline nlj::json as_json(const Title& title) { return title.json; }
 
 }; // ply
 

@@ -10,14 +10,14 @@ TEST(Ply, Layout)
 {
     EXPECT_EQ(as_string<Layout>(), "layout");
     
-    auto expected = core::json::object();
+    auto expected = nlj::json::object();
     auto actual = Layout().json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LayoutScene)
 {
-    core::json expected = {{ "scene", {{ "xaxis", {{ "visible", false }}}}}};
+    nlj::json expected = {{ "scene", {{ "xaxis", {{ "visible", false }}}}}};
     auto actual = Layout(Scene(XAxis(Visible::False))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }

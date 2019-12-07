@@ -11,7 +11,7 @@ namespace ply
 template<class D, class... Ts>
 struct Members : virtual Data
 {
-    static core::json base() { return core::json::object(); }
+    static nlj::json base() { return nlj::json::object(); }
 
     Members()
     { }

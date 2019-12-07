@@ -8,28 +8,28 @@ using namespace ply;
 
 TEST(Ply, Marker)
 {
-    auto expected = core::json::object();
+    auto expected = nlj::json::object();
     auto actual = Marker().json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerColor)
 {
-    core::json expected = {{ "color", "rgb(1,2,3)" }};
+    nlj::json expected = {{ "color", "rgb(1,2,3)" }};
     auto actual = Marker(Color(RGB(1,2,3))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerCircle)
 {
-    core::json expected = {{ "symbol", as_json(Symbol::Circle) }};
+    nlj::json expected = {{ "symbol", as_json(Symbol::Circle) }};
     auto actual = Marker(Symbol::Circle).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerSize)
 {
-    core::json expected = {{ "size", 2 }};
+    nlj::json expected = {{ "size", 2 }};
     auto actual = Marker().size(2).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }

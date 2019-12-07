@@ -14,7 +14,7 @@ struct Range : virtual Data
 };
 
 template<> inline string as_string<Range>() { return "range"; }
-inline core::json as_json(const Range& range) { return range.json; }
+inline nlj::json as_json(const Range& range) { return range.json; }
 
 }; // ply
 

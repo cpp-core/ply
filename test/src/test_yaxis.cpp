@@ -10,133 +10,133 @@ TEST(Ply, YAxis)
 {
     EXPECT_EQ(as_string<YAxis>(), "yaxis");
     
-    auto expected = core::json::object();
+    auto expected = nlj::json::object();
     auto actual = YAxis().json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisVisible)
 {
-    core::json expected = {{ "visible", false }};
+    nlj::json expected = {{ "visible", false }};
     auto actual = YAxis(Visible::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisColor)
 {
-    core::json expected = {{ "color", "rgb(32,64,128)" }};
+    nlj::json expected = {{ "color", "rgb(32,64,128)" }};
     auto actual = YAxis(Color(RGB(32,64,128))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisTitle)
 {
-    core::json expected = {{ "title", {{ "text", "abc" }}}};
+    nlj::json expected = {{ "title", {{ "text", "abc" }}}};
     auto actual = YAxis(Title(Text("abc"))).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisType)
 {
-    core::json expected = {{ "type", "-" }};
+    nlj::json expected = {{ "type", "-" }};
     auto actual = YAxis(AxisType::Dash).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisAutoRange)
 {
-    core::json expected = {{ "autorange", false }};
+    nlj::json expected = {{ "autorange", false }};
     auto actual = YAxis(AutoRange::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisRangeMode)
 {
-    core::json expected = {{ "rangemode", "tozero" }};
+    nlj::json expected = {{ "rangemode", "tozero" }};
     auto actual = YAxis(RangeMode::ToZero).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisRange)
 {
-    core::json expected = {{ "range", {1,2,3} }};
+    nlj::json expected = {{ "range", {1,2,3} }};
     auto actual = YAxis(Range(ints{1,2,3})).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisFixedRange)
 {
-    core::json expected = {{ "fixedrange", false }};
+    nlj::json expected = {{ "fixedrange", false }};
     auto actual = YAxis(FixedRange::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisConstrain)
 {
-    core::json expected = {{ "constrain", "domain" }};
+    nlj::json expected = {{ "constrain", "domain" }};
     auto actual = YAxis(Constrain::Domain).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisConstrainToward)
 {
-    core::json expected = {{ "constraintoward", "center" }};
+    nlj::json expected = {{ "constraintoward", "center" }};
     auto actual = YAxis(ConstrainToward::Center).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisTickMode)
 {
-    core::json expected = {{ "tickmode", "auto" }};
+    nlj::json expected = {{ "tickmode", "auto" }};
     auto actual = YAxis(TickMode::Auto).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisTicks)
 {
-    core::json expected = {{ "ticks", "inside" }};
+    nlj::json expected = {{ "ticks", "inside" }};
     auto actual = YAxis(Ticks::Inside).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisTicksOn)
 {
-    core::json expected = {{ "tickson", "labels" }};
+    nlj::json expected = {{ "tickson", "labels" }};
     auto actual = YAxis(TicksOn::Labels).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisMirror)
 {
-    core::json expected = {{ "mirror", false }};
+    nlj::json expected = {{ "mirror", false }};
     auto actual = YAxis(Mirror::False).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisShowTickPrefix)
 {
-    core::json expected = {{ "showtickprefix", "last" }};
+    nlj::json expected = {{ "showtickprefix", "last" }};
     auto actual = YAxis(ShowTickPrefix::Last).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisShowTickSuffix)
 {
-    core::json expected = {{ "showticksuffix", "first" }};
+    nlj::json expected = {{ "showticksuffix", "first" }};
     auto actual = YAxis(ShowTickSuffix::First).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisShowExponent)
 {
-    core::json expected = {{ "showexponent", "none" }};
+    nlj::json expected = {{ "showexponent", "none" }};
     auto actual = YAxis(ShowExponent::None).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, YAxisExponentFormat)
 {
-    core::json expected = {{ "exponentformat", "power" }};
+    nlj::json expected = {{ "exponentformat", "power" }};
     auto actual = YAxis(ExponentFormat::Power).json;
     EXPECT_EQ(actual.dump(), expected.dump());
 }

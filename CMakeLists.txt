@@ -61,7 +61,8 @@ target_include_directories(ply PUBLIC include)
 
 if(PLY_TOOLS)
   set(TOOLS
-    t0)
+    ply_t0
+    )
 
   foreach(NAME ${TOOLS})
     add_executable(${NAME} src/tools/${NAME}.cpp)
@@ -70,7 +71,7 @@ if(PLY_TOOLS)
 endif()
 
 if(PLY_TEST)
-  include_directories(include)
+  include(${CORE_DEPENDS_SOURCE_DIR}/googletest.cmake)
   enable_testing()
   add_subdirectory(test)
 endif()
