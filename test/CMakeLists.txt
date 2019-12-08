@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
+add_dependencies(cxx_depends cxx_googletest)
+include(${DEPENDS_SOURCE_DIR}/googletest.cmake)
+
 set(TESTS
   color
   enum
@@ -35,5 +38,5 @@ foreach(NAME ${TESTS})
   
   add_executable(${TEST_NAME} ${TEST_FILE})
   add_test(${TEST_NAME} bin/${TEST_NAME})
-  target_link_libraries(${TEST_NAME} ply core gtest)
+  target_link_libraries(${TEST_NAME} cxx_ply cxx_core gtest)
 endforeach(NAME)
