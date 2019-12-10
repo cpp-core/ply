@@ -31,6 +31,7 @@ message("-- cxx-ply: PLY_TOOLS ${PLY_TOOLS}")
 # Add our dependencies
 #
 add_subdirectory(./extern/cxx-core)
+add_dependencies(cxx_depends cxx_inja)
 
 add_compile_options(-Wall)
 add_compile_options(-std=c++2a)

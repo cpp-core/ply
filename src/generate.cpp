@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <regex>
+#include <inja/inja.hpp>
 #include "ply/generate.h"
 #include "core/guid.h"
 #include "core/string/join.h"
@@ -18,9 +19,9 @@ static auto html_cdn_template = R"XX(
     <meta charset="utf-8" />
   </head>
   <body>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{plotly_js}}"></script>
 
-    <div id="%%GUID%%"
+    <div id="{{guid}}"
 	 style="height: 100%; width: 100%;"
 	 class="plotly-graph-div">
     </div>
@@ -28,19 +29,22 @@ static auto html_cdn_template = R"XX(
     <script type="text/javascript">
       window.PLOTLYENV=window.PLOTLYENV || {};
       window.PLOTLYENV.BASE_URL="https://plot.ly";
-      Plotly.newPlot("%%GUID%%", %%JSON%%)
+      Plotly.newPlot("{{guid}}", {{json}})
     </script>
 
     <script type="text/javascript">
       window.removeEventListener("resize");
       window.addEventListener("resize", function(){
-	  Plotly.Plots.resize(document.getElementById("%%GUID%%"));
+	  Plotly.Plots.resize(document.getElementById("{{guid}}"));
       });
     </script>
     
   </body>
 </html>
   )XX";
+
+static constexpr auto plotly_js_url = "https://cdn.plot.ly/plotly-latest.min.js";
+static constexpr auto plotly_js_file = "file:///Users/mmelton/work/cxx-ply/plotly-latest.min.js";
 
 string construct_plot_args(const Traces& traces, const Layout& layout)
 {
@@ -54,11 +58,11 @@ string construct_plot_args(const Traces& traces, const Layout& layout)
 
 void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream& os)
 {
-    auto guid = core::Guid::generate();
+    auto guid = core::Guid::generate().as_string();
     auto args = construct_plot_args(traces, layout);
-    auto s1 = std::regex_replace(html_cdn_template, std::regex("%%GUID%%"), guid.as_string());
-    auto s2 = std::regex_replace(s1, std::regex("%%JSON%%"), args);
-    os << s2 << endl;
+    nlj::json data = {{ "guid", guid }, { "json", args }, { "plotly_js", plotly_js_url }};
+    auto html = inja::render(html_cdn_template, data);
+    os << html << endl;
 }
 
 }; // ply
