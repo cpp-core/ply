@@ -8,7 +8,8 @@
 namespace ply
 {
 
-void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream& os = cout);
+void generate_html(const Traces& traces, const ply::Layout& layout,
+		   std::ostream& os = cout, bool cdn = true);
 
 template<class... Ts>
 requires ((DerivedFrom<Ts,Trace> and ...))

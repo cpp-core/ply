@@ -33,6 +33,12 @@ message("-- cxx-ply: PLY_TOOLS ${PLY_TOOLS}")
 add_subdirectory(./extern/cxx-core)
 add_dependencies(cxx_depends cxx_inja)
 
+# Generated files
+#
+set(PLY_SHARE_DIR ${CMAKE_CURRENT_BINARY_DIR}/share)
+configure_file(include/ply/config.h.in include/ply/config.h @ONLY)
+configure_file(src/js/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
+
 add_compile_options(-Wall)
 add_compile_options(-std=c++2a)
 add_compile_options(-fconcepts)
@@ -48,7 +54,9 @@ endforeach()
 
 add_library(cxx_ply ${FILES})
 target_link_libraries(cxx_ply cxx_core)
-target_include_directories(cxx_ply PUBLIC include)
+target_include_directories(cxx_ply
+  PUBLIC include
+  PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/include)
 
 if(PLY_TOOLS)
   set(TOOLS

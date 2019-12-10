@@ -5,21 +5,23 @@
 #include <regex>
 #include <inja/inja.hpp>
 #include "ply/generate.h"
+#include "ply/config.h"
 #include "core/guid.h"
 #include "core/string/join.h"
+#include "core/string/slurp.h"
 #include "ranges/views.h"
 #include "ranges/to.h"
 
 namespace ply
 {
 
-static auto html_cdn_template = R"XX(
+static auto html_page_tmpl = R"XX(
 <html>
   <head>
     <meta charset="utf-8" />
   </head>
   <body>
-    <script src="{{plotly_js}}"></script>
+    {{body_include}}
 
     <div id="{{guid}}"
 	 style="height: 100%; width: 100%;"
@@ -43,8 +45,18 @@ static auto html_cdn_template = R"XX(
 </html>
   )XX";
 
-static constexpr auto plotly_js_url = "https://cdn.plot.ly/plotly-latest.min.js";
-static constexpr auto plotly_js_file = "file:///Users/mmelton/work/cxx-ply/plotly-latest.min.js";
+static constexpr auto html_script_src_tmpl = R"XX(
+    <script src={{cdn}}></script>;
+)XX";
+
+static constexpr auto html_script_inline_tmpl = R"XX(
+<script type="text/javascript">
+{{inline_js}}
+</script>
+)XX";
+
+static constexpr auto plotly_js_cdn = "https://cdn.plot.ly/plotly-latest.min.js";
+static constexpr auto plotly_js_file_tmpl = "{share:}/ply/js/plotly-latest.min.js";
 
 string construct_plot_args(const Traces& traces, const Layout& layout)
 {
@@ -56,12 +68,26 @@ string construct_plot_args(const Traces& traces, const Layout& layout)
     return args;
 }
 
-void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream& os)
+void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream& os, bool cdn)
 {
+    string body_include;
+    if (cdn)
+    {
+	body_include = inja::render(html_script_src_tmpl, {{ "cdn", plotly_js_cdn }});
+    }
+    else
+    {
+	auto js_file = fmt::format(plotly_js_file_tmpl, fmt::arg("share", PlyShareDirectory));
+	auto js = core::slurp_into_string(js_file);
+	body_include = inja::render(html_script_inline_tmpl, {{ "inline_js", js }});
+    }
+    
     auto guid = core::Guid::generate().as_string();
     auto args = construct_plot_args(traces, layout);
-    nlj::json data = {{ "guid", guid }, { "json", args }, { "plotly_js", plotly_js_url }};
-    auto html = inja::render(html_cdn_template, data);
+    auto html = inja::render(html_page_tmpl,
+			     {{ "guid", guid },
+			      { "json", args },
+			      { "body_include", body_include }});			     
     os << html << endl;
 }
 
