@@ -18,7 +18,9 @@ struct Scatter : Members<Scatter,Color,GroupNorm,Line,Mode,Name,Orientation,Plot
     
     Scatter() { json = base(); }
     static nlj::json base() { return {{ "type", "scatter" }}; }
-    
+
+    Scatter& xaxis(const string& axis) { json["xaxis"] = axis; return *this; }
+    Scatter& yaxis(const string& axis) { json["yaxis"] = axis; return *this; }
     Scatter& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
     Scatter& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
     Scatter& opacity(real alpha) { json["opacity"] = alpha; return *this; }
