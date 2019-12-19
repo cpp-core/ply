@@ -4,13 +4,12 @@
 #include <stdio.h>
 #include <regex>
 #include <inja/inja.hpp>
+#include <range/v3/view.hpp>
 #include "ply/generate.h"
 #include "ply/config.h"
 #include "core/guid.h"
 #include "core/string/join.h"
 #include "core/string/slurp.h"
-#include "ranges/views.h"
-#include "ranges/to.h"
 
 namespace ply
 {

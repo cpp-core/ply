@@ -25,12 +25,12 @@ struct Scatter : Members<Scatter,Color,GroupNorm,Line,Mode,Name,Orientation,Plot
     Scatter& stackgroup(string_view name) { json["stackgroup"] = name; return *this; }
 
     template<class C> Scatter& x(const C& data) { json["x"] = data; return *this; }
-    template<Arithmetic T> Scatter& x0(T x0) { json["x0"] = x0; return *this; }
-    template<Arithmetic T> Scatter& dx(T dx) { json["dx"] = dx; return *this; }
+    template<class T> Scatter& x0(T x0) { json["x0"] = x0; return *this; }
+    template<class T> Scatter& dx(T dx) { json["dx"] = dx; return *this; }
     
     template<class C> Scatter& y(const C& data) { json["y"] = data; return *this; }
-    template<Arithmetic T> Scatter& y0(T y0) { json["y0"] = y0; return *this; }
-    template<Arithmetic T> Scatter& dy(T dy) { json["dy"] = dy; return *this; }
+    template<class T> Scatter& y0(T y0) { json["y0"] = y0; return *this; }
+    template<class T> Scatter& dy(T dy) { json["dy"] = dy; return *this; }
 
     Scatter& text(string_view str) { json["text"] = str; return *this; }
 };

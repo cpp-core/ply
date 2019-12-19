@@ -9,10 +9,10 @@ namespace ply
 
 struct Pad : virtual Data
 {
-    template<Arithmetic T> Pad& t(T px) { json["t"] = px; return *this; }
-    template<Arithmetic T> Pad& r(T px) { json["r"] = px; return *this; }
-    template<Arithmetic T> Pad& b(T px) { json["b"] = px; return *this; }
-    template<Arithmetic T> Pad& l(T px) { json["l"] = px; return *this; }
+    template<class T> Pad& t(T px) { json["t"] = px; return *this; }
+    template<class T> Pad& r(T px) { json["r"] = px; return *this; }
+    template<class T> Pad& b(T px) { json["b"] = px; return *this; }
+    template<class T> Pad& l(T px) { json["l"] = px; return *this; }
 };
 
 template<> inline string as_string<Pad>() { return "pad"; }

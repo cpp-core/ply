@@ -41,7 +41,6 @@ configure_file(src/js/plotly-latest.min.js share/ply/js/plotly-latest.min.js COP
 
 add_compile_options(-Wall)
 add_compile_options(-std=c++2a)
-add_compile_options(-fconcepts)
 add_compile_options(-O3)
 
 set(SOURCES

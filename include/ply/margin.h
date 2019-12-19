@@ -13,10 +13,10 @@ struct Margin : Members<Margin,Pad>, virtual Data
     using MembersBase = Members<Margin,Pad>;
     using MembersBase::MembersBase;
     
-    template<Arithmetic T> Margin& t(T px) { json["t"] = px; return *this; }
-    template<Arithmetic T> Margin& r(T px) { json["r"] = px; return *this; }
-    template<Arithmetic T> Margin& b(T px) { json["b"] = px; return *this; }
-    template<Arithmetic T> Margin& l(T px) { json["l"] = px; return *this; }
+    template<class T> Margin& t(T px) { json["t"] = px; return *this; }
+    template<class T> Margin& r(T px) { json["r"] = px; return *this; }
+    template<class T> Margin& b(T px) { json["b"] = px; return *this; }
+    template<class T> Margin& l(T px) { json["l"] = px; return *this; }
     Margin& autoexpand(bool autoexpand) { json["autoexpand"] = autoexpand; return *this; }
 };
 

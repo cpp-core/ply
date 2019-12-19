@@ -15,7 +15,7 @@ struct Marker : Members<Marker,Color,Line,Symbol>, virtual Data
     using MembersBase = Members<Marker,Color,Line,Symbol>;
     using MembersBase::MembersBase;
     
-    template<Arithmetic T>
+    template<class T>
     Marker& size(T w) { json["size"] = w; return *this; }
 };
 

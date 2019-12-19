@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+.clangd/
+compile_commands.json
 
 # Emacs
 *~

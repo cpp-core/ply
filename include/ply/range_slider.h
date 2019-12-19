@@ -28,7 +28,7 @@ struct RangeSlider : Members<RangeSlider,Range,SliderYAxis,Visible>, virtual Dat
     RangeSlider& bordercolor(const Color& c) { json["bordercolor"] = as_json(c); return *this; }
     RangeSlider& borderwidth(int w) { json["borderwidth"] = w; return *this; }
     RangeSlider& autorange(bool b) { json["autorange"] = b; return *this; }
-    template<Arithmetic T> RangeSlider& thickness(T x) { json["thickness"] = x; return *this; }
+    template<class T> RangeSlider& thickness(T x) { json["thickness"] = x; return *this; }
 };
 
 template<> inline string as_string<RangeSlider>() { return "rangeslider"; }

@@ -36,7 +36,10 @@ foreach(NAME ${TESTS})
     set(TEST_FILE ${PROJECT_SOURCE_DIR}/test/src/${DIRNAME}/test_${CATNAME}.cpp)    
   endif()
   
+  list(APPEND TEST_TARGETS ${TEST_NAME})
   add_executable(${TEST_NAME} ${TEST_FILE})
   add_test(${TEST_NAME} bin/${TEST_NAME})
   target_link_libraries(${TEST_NAME} cxx_ply cxx_core gtest)
 endforeach(NAME)
+
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS ${TEST_TARGETS})

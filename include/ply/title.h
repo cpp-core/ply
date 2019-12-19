@@ -18,8 +18,8 @@ struct Title : Members<Title,Font,Pad,Text,XAnchor,YAnchor>, virtual Data
     
     Title& xRef(Ref xref) { json["xref"] = as_json(xref); return *this; }
     Title& yRef(Ref yref) { json["yref"] = as_json(yref); return *this; }
-    template<Arithmetic T> Title& x(T x) { json["x"] = x; return *this; }
-    template<Arithmetic T> Title& y(T y) { json["y"] = y; return *this; }
+    template<class T> Title& x(T x) { json["x"] = x; return *this; }
+    template<class T> Title& y(T y) { json["y"] = y; return *this; }
 };
 
 template<> inline string as_string<Title>() { return "title"; }

@@ -17,7 +17,7 @@ struct Line : Members<Line,Color,Dash,Shape>, virtual Data
     Line& smoothing(real s) { json["smoothing"] = s; return *this; }
     Line& simplify(bool b) { json["simplify"] = b; return *this; }
 
-    template<Arithmetic T>
+    template<class T>
     Line& width(T w) { json["width"] = w; return *this; }
 };
 
