@@ -11,17 +11,17 @@ namespace ply
 void generate_html(const Traces& traces, const ply::Layout& layout,
 		   std::ostream& os = cout, bool cdn = true);
 
-template<class... Ts>
-void generate_html(const Ts&... traces, const ply::Layout& layout)
-{ generate_html(Traces{traces...}, layout); }
+// template<class... Ts>
+// void generate_html(const Ts&... traces, const ply::Layout& layout)
+// { generate_html(Traces{traces...}, layout); }
 
-template<class... Ts>
-void generate_html(const Ts&... traces, std::ostream& os)
-{ generate_html(Traces{traces...}, Layout{}, os); }
+// template<class... Ts>
+// void generate_html(const Ts&... traces, std::ostream& os)
+// { generate_html(Traces{traces...}, Layout{}, os); }
 
-template<class... Ts>
-void generate_html(const Ts&... traces)
-{ generate_html(Traces{traces...}, Layout{}, cout); }
+// template<class... Ts>
+// void generate_html(const Ts&... traces)
+// { generate_html(Traces{traces...}, Layout{}, cout); }
 
 }; // ply
 
