@@ -59,8 +59,9 @@ static constexpr auto plotly_js_file_tmpl = "{share:}/ply/js/plotly-latest.min.j
 
 string construct_plot_args(const Traces& traces, const Layout& layout)
 {
-    auto strs = v::transform(traces, [](const auto& trace) { return trace.json.dump(); })
-	| r::to<strings>();
+    strings strs;
+    for (const auto& trace : traces)
+	strs.emplace_back(trace.json.dump());
     auto args = "[" + core::join(strs, ",") + "]";
     if (not layout.json.is_null())
 	args += "," + layout.json.dump();
