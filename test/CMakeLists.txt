@@ -9,6 +9,7 @@ set(TESTS
   color
   contour
   enum
+  heatmap
   layout
   line
   margin

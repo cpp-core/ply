@@ -7,6 +7,7 @@
 #include "ply/contour.h"
 #include "ply/enum.h"
 #include "ply/generate.h"
+#include "ply/heatmap.h"
 #include "ply/layout.h"
 #include "ply/line.h"
 #include "ply/ohlc.h"
