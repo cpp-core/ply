@@ -7,6 +7,7 @@ include(${DEPENDS_SOURCE_DIR}/googletest.cmake)
 
 set(TESTS
   color
+  contour
   enum
   layout
   line
