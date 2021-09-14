@@ -26,7 +26,7 @@ endif()
 # PLY_TOOLS -- Build the tools
 #
 option(PLY_TEST "Generate the tests." OFF)
-option(PLY_TOOLS "Build the tools." OFF)
+option(PLY_TOOLS "Build the tools." ON)
 
 message("-- cxx-ply: PLY_TEST ${PLY_TEST}")
 message("-- cxx-ply: PLY_TOOLS ${PLY_TOOLS}")
