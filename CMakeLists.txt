@@ -63,6 +63,7 @@ target_include_directories(cxx_ply
 if(PLY_TOOLS)
   set(TOOLS
     ply_t0
+    ply_t1
     )
 
   foreach(NAME ${TOOLS})
