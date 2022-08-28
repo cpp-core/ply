@@ -1,10 +1,9 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <stdio.h>
 #include <regex>
 #include <inja/inja.hpp>
-#include <range/v3/view.hpp>
 #include "ply/generate.h"
 #include "ply/config.h"
 #include "core/guid.h"
