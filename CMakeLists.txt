@@ -42,10 +42,14 @@ set(PLY_SHARE_DIR ${CMAKE_CURRENT_BINARY_DIR}/share)
 configure_file(include/ply/config.h.in include/ply/config.h @ONLY)
 configure_file(src/js/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 add_compile_options(-Wall)
-add_compile_options(-std=c++2a)
 add_compile_options(-O)
 add_compile_options(-stdlib=libc++)
+
 add_link_options(-stdlib=libc++)
 
 set(SOURCES
