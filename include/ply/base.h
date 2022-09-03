@@ -2,8 +2,8 @@
 //
 
 #pragma once
-#include "core/utility/common.h"
-#include "core/json/nljson.h"
+#include "core/util/common.h"
+#include "core/extra/json/nljson.h"
 
 namespace ply
 {

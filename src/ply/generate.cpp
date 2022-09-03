@@ -6,7 +6,7 @@
 #include <inja/inja.hpp>
 #include "ply/generate.h"
 #include "ply/config.h"
-#include "core/utility/guid.h"
+#include "core/util/guid.h"
 #include "core/string/join.h"
 #include "core/string/slurp.h"
 
