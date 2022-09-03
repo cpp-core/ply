@@ -1,7 +1,7 @@
-// Copyright (C) 2019, 2021 by Mark Melton
+// Copyright (C) 2019, 2021, 2022 by Mark Melton
 //
 
-#include "core/tool.h"
+#include "core/utility/tool.h"
 #include "ply/ply.h"
 
 using namespace ply;
