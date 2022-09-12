@@ -62,11 +62,12 @@ endforeach()
 
 add_library(cxx_ply ${FILES})
 
-target_link_libraries(cxx_ply cxx_core::cxx_core pantor::inja)
+target_link_libraries(cxx_ply PUBLIC cxx_core::cxx_core PRIVATE pantor::inja)
 
-target_include_directories(cxx_ply
-  PUBLIC include
-  PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/include)
+target_include_directories(cxx_ply PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 if(PLY_TOOLS)
   set(TOOLS
@@ -88,3 +89,9 @@ if(PLY_TEST)
   endif()
   add_subdirectory(test)
 endif()
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/helpers.cmake)
+install_config(cxx_ply)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/ply/config.h DESTINATION include/ply)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ply DESTINATION include)
