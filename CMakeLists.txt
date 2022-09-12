@@ -34,16 +34,8 @@ message("-- cxx-ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 
 # Add our dependencies
 #
-find_package(cppzmq REQUIRED)
-find_package(cpr REQUIRED)
 find_package(cxx_core REQUIRED)
-find_package(cxx_core_pp REQUIRED)
-find_package(cxx_core_mp REQUIRED)
-find_package(date REQUIRED)
-find_package(fmt REQUIRED)
 find_package(inja REQUIRED)
-find_package(libbz2 REQUIRED)
-find_package(spdlog REQUIRED)
 
 # Generated files
 #
