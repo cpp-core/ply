@@ -1,3 +1,0 @@
-[submodule "extern/cxx-core"]
-	path = extern/cxx-core
-	url = git@github.com:melton1968/cxx-core.git

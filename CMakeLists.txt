@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-project(cxx-ply VERSION 0.1 LANGUAGES CXX)
+project(cxx_ply VERSION 0.1 LANGUAGES CXX)
 
 # Make including this file idempotent
 #
@@ -30,11 +30,20 @@ option(PLY_TOOLS "Build the tools." ON)
 
 message("-- cxx-ply: PLY_TEST ${PLY_TEST}")
 message("-- cxx-ply: PLY_TOOLS ${PLY_TOOLS}")
+message("-- cxx-ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 
 # Add our dependencies
 #
-add_subdirectory(./extern/cxx-core)
-add_dependencies(cxx_depends cxx_inja)
+find_package(cppzmq REQUIRED)
+find_package(cpr REQUIRED)
+find_package(cxx_core REQUIRED)
+find_package(cxx_core_pp REQUIRED)
+find_package(cxx_core_mp REQUIRED)
+find_package(date REQUIRED)
+find_package(fmt REQUIRED)
+find_package(inja REQUIRED)
+find_package(libbz2 REQUIRED)
+find_package(spdlog REQUIRED)
 
 # Generated files
 #
@@ -49,7 +58,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options(-Wall)
 add_compile_options(-O)
 add_compile_options(-stdlib=libc++)
-
 add_link_options(-stdlib=libc++)
 
 set(SOURCES
@@ -61,7 +69,9 @@ foreach(NAME ${SOURCES})
 endforeach()
 
 add_library(cxx_ply ${FILES})
-target_link_libraries(cxx_ply cxx_core)
+
+target_link_libraries(cxx_ply cxx_core::cxx_core pantor::inja)
+
 target_include_directories(cxx_ply
   PUBLIC include
   PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/include)
@@ -80,5 +90,9 @@ endif()
 
 if(PLY_TEST)
   enable_testing()
+  if (NOT TARGET check)
+    add_custom_target(check ${CMAKE_CTEST_COMMAND})
+    add_custom_target(check_detail ${CMAKE_CTEST_COMMAND} -V)
+  endif()
   add_subdirectory(test)
 endif()
