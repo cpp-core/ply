@@ -62,7 +62,10 @@ endforeach()
 
 add_library(cxx_ply ${FILES})
 
-target_link_libraries(cxx_ply PUBLIC cxx_core::cxx_core PRIVATE pantor::inja)
+target_link_libraries(cxx_ply
+  PUBLIC $<BUILD_INTERFACE:cxx_core::cxx_core>
+  PRIVATE $<INSTALL_INTERFACE:cxx_core::cxx_core>
+  PRIVATE pantor::inja)
 
 target_include_directories(cxx_ply PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
