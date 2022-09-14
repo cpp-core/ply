@@ -40,19 +40,18 @@ find_package(cxx_core_string REQUIRED)
 find_package(cxx_core_util REQUIRED)
 find_package(inja REQUIRED)
 
-# Generated files
+# Configuration
 #
 # The config.h contains the base location of the shared artifacts
 # which is different for build versus install. We configure the file
 # once for each. The install version is later copied to the final
 # destination by the install cmake.
-set(PLY_SHARE_DIR ${CMAKE_CURRENT_BINARY_DIR}/share)
+#
+set(PLY_SHARE_DIR ${PROJECT_SOURCE_DIR}/share)
 configure_file(config/config.h.in include/ply/config.h @ONLY)
-configure_file(config/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
 
 set(PLY_SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share)
 configure_file(config/config.h.in forinstall/config.h @ONLY)
-configure_file(config/plotly-latest.min.js forinstall/plotly-latest.min.js COPYONLY)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -111,10 +110,10 @@ if(PLY_TEST)
   add_subdirectory(test)
 endif()
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/helpers.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(cxx_ply)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/ply/config.h DESTINATION include/ply)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ply DESTINATION include)
 install(FILES ${PROJECT_BINARY_DIR}/forinstall/config.h DESTINATION include/ply)
-install(FILES ${PROJECT_BINARY_DIR}/forinstall/plotly-latest.min.js DESTINATION ${CMAKE_INSTALL_PREFIX}/share/ply/js)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/share DESTINATION .)
