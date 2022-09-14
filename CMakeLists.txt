@@ -42,6 +42,10 @@ find_package(inja REQUIRED)
 
 # Generated files
 #
+# The config.h contains the base location of the shared artifacts
+# which is different for build versus install. We configure the file
+# once for each. The install version is later copied to the final
+# destination by the install cmake.
 set(PLY_SHARE_DIR ${CMAKE_CURRENT_BINARY_DIR}/share)
 configure_file(config/config.h.in include/ply/config.h @ONLY)
 configure_file(config/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
