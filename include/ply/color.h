@@ -1,7 +1,8 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #pragma once
+#include <fmt/format.h>
 #include "ply/base.h"
 
 namespace ply
@@ -19,14 +20,14 @@ struct RGB
 
 struct RGBA
 {
-    RGBA(int arg_red, int arg_green, int arg_blue, real arg_alpha)
+    RGBA(int arg_red, int arg_green, int arg_blue, double arg_alpha)
 	: red(arg_red)
 	, green(arg_green)
 	, blue(arg_blue)
 	, alpha(arg_alpha)
     { }
     int red, green, blue;
-    real alpha;
+    double alpha;
 };
 
 struct Color : virtual Data
@@ -41,14 +42,14 @@ struct Color : virtual Data
     { rgba(c.red, c.green, c.blue, c.alpha); }
 
     Color& rgb(int red, int green, int blue)
-    { json = fmt::format("rgb({:d},{:d},{:d})", red, green, blue); return *this; }
+    { json_ = fmt::format("rgb({:d},{:d},{:d})", red, green, blue); return *this; }
     
-    Color& rgba(int red, int green, int blue, real alpha)
-    { json = fmt::format("rgba({:d},{:d},{:d},{})", red, green, blue, alpha); return *this; }
+    Color& rgba(int red, int green, int blue, double alpha)
+    { json_ = fmt::format("rgba({:d},{:d},{:d},{})", red, green, blue, alpha); return *this; }
 };
 
-template<> inline string as_string<Color>() { return "color"; }
-inline nlj::json as_json(const Color& c) { return c.json; }
+template<> inline std::string as_string<Color>() { return "color"; }
+inline json as_json(const Color& c) { return c.json_; }
 
 }; // ply
 

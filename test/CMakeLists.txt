@@ -39,7 +39,7 @@ foreach(NAME ${TESTS})
   
   add_executable(${TEST_NAME} EXCLUDE_FROM_ALL ${TEST_FILE})
   add_test(${TEST_NAME} bin/${TEST_NAME})
-  target_link_libraries(${TEST_NAME} cxx_ply cxx_core::cxx_core googletest::cxx-googletest)
+  target_link_libraries(${TEST_NAME} cxx_ply "${LIBRARIES}" googletest::cxx-googletest)
 
   add_dependencies(check ${TEST_NAME})
   add_dependencies(check_detail ${TEST_NAME})

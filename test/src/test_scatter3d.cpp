@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -15,120 +15,120 @@ TEST(Ply, Scatter3d)
 
 TEST(Ply, Scatter3dDefault)
 {
-    nlj::json expected = {{ "type", "scatter3d" }};
-    auto actual = Scatter3d().json;
+    json expected = {{ "type", "scatter3d" }};
+    auto actual = Scatter3d().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dPlotVisible)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "visible", false }};
-    auto actual = Scatter3d(PlotVisible::False).json;
+    json expected = {{ "type", "scatter3d" }, { "visible", false }};
+    auto actual = Scatter3d(PlotVisible::False).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dShowLegend)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "showlegend", false }};
-    auto actual = Scatter3d().showlegend(false).json;
+    json expected = {{ "type", "scatter3d" }, { "showlegend", false }};
+    auto actual = Scatter3d().showlegend(false).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dLegendGroup)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "legendgroup", "abc" }};
-    auto actual = Scatter3d().legendgroup("abc").json;
+    json expected = {{ "type", "scatter3d" }, { "legendgroup", "abc" }};
+    auto actual = Scatter3d().legendgroup("abc").json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dOpacity)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "opacity", 0.5 }};
-    auto actual = Scatter3d().opacity(0.5).json;
+    json expected = {{ "type", "scatter3d" }, { "opacity", 0.5 }};
+    auto actual = Scatter3d().opacity(0.5).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ScatterMarker)
 {
-    nlj::json expected = {{ "marker", {{ "size", 2 }}}, { "type", "scatter3d" }};
-    auto actual = Scatter3d(Marker().size(2)).json;
+    json expected = {{ "marker", {{ "size", 2 }}}, { "type", "scatter3d" }};
+    auto actual = Scatter3d(Marker().size(2)).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dName)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "name", "abc" }};
-    auto actual = Scatter3d(Name("abc")).json;
+    json expected = {{ "type", "scatter3d" }, { "name", "abc" }};
+    auto actual = Scatter3d(Name("abc")).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dX)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "x", {1, 2, 3, 4} }};
-    auto actual = Scatter3d().x(ints{1, 2, 3, 4}).json;
+    json expected = {{ "type", "scatter3d" }, { "x", {1, 2, 3, 4} }};
+    auto actual = Scatter3d().x(std::vector<int>{1, 2, 3, 4}).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dY)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "y", {1, 2, 3, 4} }};
-    auto actual = Scatter3d().y(ints{1, 2, 3, 4}).json;
+    json expected = {{ "type", "scatter3d" }, { "y", {1, 2, 3, 4} }};
+    auto actual = Scatter3d().y(std::vector<int>{1, 2, 3, 4}).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dZ)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "z", {1, 2, 3, 4} }};
-    auto actual = Scatter3d().z(ints{1, 2, 3, 4}).json;
+    json expected = {{ "type", "scatter3d" }, { "z", {1, 2, 3, 4} }};
+    auto actual = Scatter3d().z(std::vector<int>{1, 2, 3, 4}).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dStackGroup)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "stackgroup", "abc" }};
-    auto actual = Scatter3d().stackgroup("abc").json;
+    json expected = {{ "type", "scatter3d" }, { "stackgroup", "abc" }};
+    auto actual = Scatter3d().stackgroup("abc").json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dOrientation)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "orientation", "v" }};
-    auto actual = Scatter3d(Orientation::V).json;
+    json expected = {{ "type", "scatter3d" }, { "orientation", "v" }};
+    auto actual = Scatter3d(Orientation::V).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dGroupNorm)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "groupnorm", "percent" }};
-    auto actual = Scatter3d(GroupNorm::Percent).json;
+    json expected = {{ "type", "scatter3d" }, { "groupnorm", "percent" }};
+    auto actual = Scatter3d(GroupNorm::Percent).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dText)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "text", "abc" }};
-    auto actual = Scatter3d().text("abc").json;
+    json expected = {{ "type", "scatter3d" }, { "text", "abc" }};
+    auto actual = Scatter3d().text("abc").json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dMode)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "mode", "markers" }};
-    auto actual = Scatter3d(Mode::Markers).json;
+    json expected = {{ "type", "scatter3d" }, { "mode", "markers" }};
+    auto actual = Scatter3d(Mode::Markers).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dLine)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "line", {{ "width", 2 }}}};
-    auto actual = Scatter3d(Line().width(2)).json;
+    json expected = {{ "type", "scatter3d" }, { "line", {{ "width", 2 }}}};
+    auto actual = Scatter3d(Line().width(2)).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, Scatter3dColor)
 {
-    nlj::json expected = {{ "type", "scatter3d" }, { "color", "rgb(1,2,3)" }};
-    auto actual = Scatter3d(Color(RGB(1,2,3))).json;
+    json expected = {{ "type", "scatter3d" }, { "color", "rgb(1,2,3)" }};
+    auto actual = Scatter3d(Color(RGB(1,2,3))).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

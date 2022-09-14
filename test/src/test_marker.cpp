@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -8,29 +8,29 @@ using namespace ply;
 
 TEST(Ply, Marker)
 {
-    auto expected = nlj::json::object();
-    auto actual = Marker().json;
+    auto expected = json::object();
+    auto actual = Marker().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerColor)
 {
-    nlj::json expected = {{ "color", "rgb(1,2,3)" }};
-    auto actual = Marker(Color(RGB(1,2,3))).json;
+    json expected = {{ "color", "rgb(1,2,3)" }};
+    auto actual = Marker(Color(RGB(1,2,3))).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerCircle)
 {
-    nlj::json expected = {{ "symbol", as_json(Symbol::Circle) }};
-    auto actual = Marker(Symbol::Circle).json;
+    json expected = {{ "symbol", as_json(Symbol::Circle) }};
+    auto actual = Marker(Symbol::Circle).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarkerSize)
 {
-    nlj::json expected = {{ "size", 2 }};
-    auto actual = Marker().size(2).json;
+    json expected = {{ "size", 2 }};
+    auto actual = Marker().size(2).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 int main(int argc, char *argv[])

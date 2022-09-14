@@ -15,8 +15,8 @@ struct Scene : Members<Scene,XAxis,YAxis,ZAxis>, virtual Data
     using MembersBase::MembersBase;
 };
 
-template<> inline string as_string<Scene>() { return "scene"; }
-inline nlj::json as_json(const Scene& scene) { return scene.json; }
+template<> inline std::string as_string<Scene>() { return "scene"; }
+inline json as_json(const Scene& scene) { return scene.json_; }
 
 }; // ply
 

@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -8,50 +8,50 @@ using namespace ply;
 
 TEST(Ply, Line)
 {
-    auto expected = nlj::json::object();
-    auto actual = Line().json;
+    auto expected = json::object();
+    auto actual = Line().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineColor)
 {
-    nlj::json expected = {{ "color", "rgb(1,2,3)" }};
-    auto actual = Line(Color(RGB(1,2,3))).json;
+    json expected = {{ "color", "rgb(1,2,3)" }};
+    auto actual = Line(Color(RGB(1,2,3))).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineWidth)
 {
-    nlj::json expected = {{ "width", 2 }};
-    auto actual = Line().width(2).json;
+    json expected = {{ "width", 2 }};
+    auto actual = Line().width(2).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineSmoothing)
 {
-    nlj::json expected = {{ "smoothing", 0.8 }};
-    auto actual = Line().smoothing(0.8).json;
+    json expected = {{ "smoothing", 0.8 }};
+    auto actual = Line().smoothing(0.8).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineSimplify)
 {
-    nlj::json expected = {{ "simplify", true }};
-    auto actual = Line().simplify(true).json;
+    json expected = {{ "simplify", true }};
+    auto actual = Line().simplify(true).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineDash)
 {
-    nlj::json expected = {{ "dash", as_json(Dash::LongDash) }};
-    auto actual = Line(Dash::LongDash).json;
+    json expected = {{ "dash", as_json(Dash::LongDash) }};
+    auto actual = Line(Dash::LongDash).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, LineShape)
 {
-    nlj::json expected = {{ "shape", as_json(Shape::Spline) }};
-    auto actual = Line(Shape::Spline).json;
+    json expected = {{ "shape", as_json(Shape::Spline) }};
+    auto actual = Line(Shape::Spline).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

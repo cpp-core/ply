@@ -9,14 +9,14 @@ namespace ply
 
 struct Pad : virtual Data
 {
-    template<class T> Pad& t(T px) { json["t"] = px; return *this; }
-    template<class T> Pad& r(T px) { json["r"] = px; return *this; }
-    template<class T> Pad& b(T px) { json["b"] = px; return *this; }
-    template<class T> Pad& l(T px) { json["l"] = px; return *this; }
+    template<class T> Pad& t(T px) { json_["t"] = px; return *this; }
+    template<class T> Pad& r(T px) { json_["r"] = px; return *this; }
+    template<class T> Pad& b(T px) { json_["b"] = px; return *this; }
+    template<class T> Pad& l(T px) { json_["l"] = px; return *this; }
 };
 
-template<> inline string as_string<Pad>() { return "pad"; }
-inline nlj::json as_json(const Pad& pad) { return pad.json; }
+template<> inline std::string as_string<Pad>() { return "pad"; }
+inline json as_json(const Pad& pad) { return pad.json_; }
 
 }; // ply
 

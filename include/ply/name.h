@@ -9,11 +9,11 @@ namespace ply
 
 struct Name : virtual Data
 {
-    Name(string_view name) { json = name; }
+    Name(std::string_view name) { json_ = name; }
 };
 
-template<> inline string as_string<Name>() { return "name"; }
-inline nlj::json as_json(const Name& name) { return name.json; }
+template<> inline std::string as_string<Name>() { return "name"; }
+inline json as_json(const Name& name) { return name.json_; }
 
 }; // ply
 

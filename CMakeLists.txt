@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 project(cxx_ply VERSION 0.1 LANGUAGES CXX)
 
 # Make including this file idempotent
@@ -17,6 +17,7 @@ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
   set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+  set(CMAKE_DOCS_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/docs)
   
   # Have cmake output the compilation commands
   set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -34,7 +35,9 @@ message("-- cxx-ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 
 # Add our dependencies
 #
-find_package(cxx_core REQUIRED)
+find_package(cxx_core_mp REQUIRED)
+find_package(cxx_core_string REQUIRED)
+find_package(cxx_core_util REQUIRED)
 find_package(inja REQUIRED)
 
 # Generated files
@@ -62,10 +65,17 @@ endforeach()
 
 add_library(cxx_ply ${FILES})
 
+set(LIBRARIES
+  cxx_core_mp::cxx_core_mp
+  cxx_core_util::cxx_core_util)
+
+set(PRIVATE_LIBRARIES
+  cxx_core_string::cxx_core_string
+  pantor::inja)
+
 target_link_libraries(cxx_ply
-  PUBLIC $<BUILD_INTERFACE:cxx_core::cxx_core>
-  PRIVATE $<INSTALL_INTERFACE:cxx_core::cxx_core>
-  PRIVATE pantor::inja)
+  PUBLIC ${LIBRARIES}
+  PRIVATE ${PRIVATE_LIBRARIES})
 
 target_include_directories(cxx_ply PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

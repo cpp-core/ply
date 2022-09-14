@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -10,50 +10,50 @@ TEST(Ply, Margin)
 {
     EXPECT_EQ(as_string<Margin>(), "margin");
     
-    auto expected = nlj::json::object();
-    auto actual = Margin().json;
+    auto expected = json::object();
+    auto actual = Margin().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginT)
 {
-    nlj::json expected = {{ "t", 1 }};
-    auto actual = Margin().t(1).json;
+    json expected = {{ "t", 1 }};
+    auto actual = Margin().t(1).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginR)
 {
-    nlj::json expected = {{ "r", 1 }};
-    auto actual = Margin().r(1).json;
+    json expected = {{ "r", 1 }};
+    auto actual = Margin().r(1).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginB)
 {
-    nlj::json expected = {{ "b", 1 }};
-    auto actual = Margin().b(1).json;
+    json expected = {{ "b", 1 }};
+    auto actual = Margin().b(1).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginL)
 {
-    nlj::json expected = {{ "l", 1 }};
-    auto actual = Margin().l(1).json;
+    json expected = {{ "l", 1 }};
+    auto actual = Margin().l(1).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginPad)
 {
-    nlj::json expected = {{ "pad", {{ "l", 1 }, { "r", 2 }, { "t", 3 }, { "b", 4 }}}};
-    auto actual = Margin(Pad().l(1).r(2).t(3).b(4)).json;
+    json expected = {{ "pad", {{ "l", 1 }, { "r", 2 }, { "t", 3 }, { "b", 4 }}}};
+    auto actual = Margin(Pad().l(1).r(2).t(3).b(4)).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, MarginAutoExpand)
 {
-    nlj::json expected = {{ "autoexpand", true }};
-    auto actual = Margin().autoexpand(true).json;
+    json expected = {{ "autoexpand", true }};
+    auto actual = Margin().autoexpand(true).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

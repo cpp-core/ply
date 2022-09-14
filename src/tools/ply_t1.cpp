@@ -8,10 +8,10 @@ using namespace ply;
 
 int tool_main(int argc, const char *argv[])
 {
-    std::vector<reals> x = {{1.0,2.0,3.0},
-	       {1.0,2.0,3.0},
-	       {1.0,1.0,2.0},
-	       {1.0,1.0,1.0}};
+    std::vector<std::vector<double>> x = {{1.0,2.0,3.0},
+					  {1.0,2.0,3.0},
+					  {1.0,1.0,2.0},
+					  {1.0,1.0,1.0}};
     Traces traces;
     traces.emplace_back(Contour().z(x));
     generate_html(traces, Layout());

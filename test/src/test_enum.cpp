@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -10,7 +10,7 @@
 
 #define PLY_TEST_ENUM_CASE(name, seq)					\
     TEST(CORE_PP_CAT(Ply,name), CORE_PP_HEAD_SEQ(seq)) {		\
-     	nlj::json expected = CORE_PP_SECOND_SEQ(seq);			\
+     	json expected = CORE_PP_SECOND_SEQ(seq);			\
 	auto actual = as_json(ply::name::CORE_PP_HEAD_SEQ(seq));	\
 	EXPECT_EQ(actual.dump(), expected.dump());			\
     }

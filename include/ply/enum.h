@@ -12,8 +12,8 @@
 #define PLY_ENUM_DECL(name, jname, seq)					\
     namespace ply {							\
     enum class name { CORE_PP_MAP_INFIX_SEQ(CORE_PP_HEAD_SEQ, CORE_PP_COMMA, seq) }; \
-    template<> inline string as_string<name>() { return jname; }	\
-    inline nlj::json as_json(name o) {					\
+    template<> inline std::string as_string<name>() { return jname; }	\
+    inline json as_json(name o) {					\
     	switch(o) { CORE_PP_MAP_WITH_SEQ(PLY_ENUM_CASE,name,seq) }	\
      	throw std::runtime_error(#name "::as_json: unknown enum value"); \
     }}; // ply

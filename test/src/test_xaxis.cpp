@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -10,141 +10,141 @@ TEST(Ply, XAxis)
 {
     EXPECT_EQ(as_string<XAxis>(), "xaxis");
     
-    auto expected = nlj::json::object();
-    auto actual = XAxis().json;
+    auto expected = json::object();
+    auto actual = XAxis().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisVisible)
 {
-    nlj::json expected = {{ "visible", false }};
-    auto actual = XAxis(Visible::False).json;
+    json expected = {{ "visible", false }};
+    auto actual = XAxis(Visible::False).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisColor)
 {
-    nlj::json expected = {{ "color", "rgb(32,64,128)" }};
-    auto actual = XAxis(Color(RGB(32,64,128))).json;
+    json expected = {{ "color", "rgb(32,64,128)" }};
+    auto actual = XAxis(Color(RGB(32,64,128))).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisTitle)
 {
-    nlj::json expected = {{ "title", {{ "text", "abc" }}}};
-    auto actual = XAxis(Title(Text("abc"))).json;
+    json expected = {{ "title", {{ "text", "abc" }}}};
+    auto actual = XAxis(Title(Text("abc"))).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisType)
 {
-    nlj::json expected = {{ "type", "-" }};
-    auto actual = XAxis(AxisType::Dash).json;
+    json expected = {{ "type", "-" }};
+    auto actual = XAxis(AxisType::Dash).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisAutoRange)
 {
-    nlj::json expected = {{ "autorange", false }};
-    auto actual = XAxis(AutoRange::False).json;
+    json expected = {{ "autorange", false }};
+    auto actual = XAxis(AutoRange::False).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisRangeMode)
 {
-    nlj::json expected = {{ "rangemode", "tozero" }};
-    auto actual = XAxis(RangeMode::ToZero).json;
+    json expected = {{ "rangemode", "tozero" }};
+    auto actual = XAxis(RangeMode::ToZero).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisRange)
 {
-    nlj::json expected = {{ "range", {1,2,3} }};
-    auto actual = XAxis(Range(ints{1,2,3})).json;
+    json expected = {{ "range", {1,2,3} }};
+    auto actual = XAxis(Range(std::vector<int>{1,2,3})).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisFixedRange)
 {
-    nlj::json expected = {{ "fixedrange", false }};
-    auto actual = XAxis(FixedRange::False).json;
+    json expected = {{ "fixedrange", false }};
+    auto actual = XAxis(FixedRange::False).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisConstrain)
 {
-    nlj::json expected = {{ "constrain", "domain" }};
-    auto actual = XAxis(Constrain::Domain).json;
+    json expected = {{ "constrain", "domain" }};
+    auto actual = XAxis(Constrain::Domain).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisConstrainToward)
 {
-    nlj::json expected = {{ "constraintoward", "center" }};
-    auto actual = XAxis(ConstrainToward::Center).json;
+    json expected = {{ "constraintoward", "center" }};
+    auto actual = XAxis(ConstrainToward::Center).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisTickMode)
 {
-    nlj::json expected = {{ "tickmode", "auto" }};
-    auto actual = XAxis(TickMode::Auto).json;
+    json expected = {{ "tickmode", "auto" }};
+    auto actual = XAxis(TickMode::Auto).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisTicks)
 {
-    nlj::json expected = {{ "ticks", "inside" }};
-    auto actual = XAxis(Ticks::Inside).json;
+    json expected = {{ "ticks", "inside" }};
+    auto actual = XAxis(Ticks::Inside).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisTicksOn)
 {
-    nlj::json expected = {{ "tickson", "labels" }};
-    auto actual = XAxis(TicksOn::Labels).json;
+    json expected = {{ "tickson", "labels" }};
+    auto actual = XAxis(TicksOn::Labels).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisMirror)
 {
-    nlj::json expected = {{ "mirror", false }};
-    auto actual = XAxis(Mirror::False).json;
+    json expected = {{ "mirror", false }};
+    auto actual = XAxis(Mirror::False).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisShowTickPrefix)
 {
-    nlj::json expected = {{ "showtickprefix", "last" }};
-    auto actual = XAxis(ShowTickPrefix::Last).json;
+    json expected = {{ "showtickprefix", "last" }};
+    auto actual = XAxis(ShowTickPrefix::Last).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisShowTickSuffix)
 {
-    nlj::json expected = {{ "showticksuffix", "first" }};
-    auto actual = XAxis(ShowTickSuffix::First).json;
+    json expected = {{ "showticksuffix", "first" }};
+    auto actual = XAxis(ShowTickSuffix::First).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisShowExponent)
 {
-    nlj::json expected = {{ "showexponent", "none" }};
-    auto actual = XAxis(ShowExponent::None).json;
+    json expected = {{ "showexponent", "none" }};
+    auto actual = XAxis(ShowExponent::None).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisExponentFormat)
 {
-    nlj::json expected = {{ "exponentformat", "power" }};
-    auto actual = XAxis(ExponentFormat::Power).json;
+    json expected = {{ "exponentformat", "power" }};
+    auto actual = XAxis(ExponentFormat::Power).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, XAxisRangeSlider)
 {
-    nlj::json expected = {{ "rangeslider", {{ "visible", true }}}};
-    auto actual = XAxis(RangeSlider(Visible::True)).json;
+    json expected = {{ "rangeslider", {{ "visible", true }}}};
+    auto actual = XAxis(RangeSlider(Visible::True)).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

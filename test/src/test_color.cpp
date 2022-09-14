@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #include <gtest/gtest.h>
@@ -6,22 +6,22 @@
 
 TEST(Ply, Color)
 {
-    auto expected = nlj::json::object();
-    auto actual = ply::Color().json;
+    auto expected = json::object();
+    auto actual = ply::Color().json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ColorRgb)
 {
-    nlj::json expected = "rgb(1,2,3)";
-    auto actual = ply::Color().rgb(1,2,3).json;
+    json expected = "rgb(1,2,3)";
+    auto actual = ply::Color().rgb(1,2,3).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 
 TEST(Ply, ColorRgba)
 {
-    nlj::json expected = "rgba(1,2,3,0.5)";
-    auto actual = ply::Color().rgba(1,2,3,0.5).json;
+    json expected = "rgba(1,2,3,0.5)";
+    auto actual = ply::Color().rgba(1,2,3,0.5).json_;
     EXPECT_EQ(actual.dump(), expected.dump());
 }
 

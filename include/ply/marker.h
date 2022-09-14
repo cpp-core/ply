@@ -16,11 +16,11 @@ struct Marker : Members<Marker,Color,Line,Symbol>, virtual Data
     using MembersBase::MembersBase;
     
     template<class T>
-    Marker& size(T w) { json["size"] = w; return *this; }
+    Marker& size(T w) { json_["size"] = w; return *this; }
 };
 
-template<> inline string as_string<Marker>() { return "marker"; }
-inline nlj::json as_json(const Marker& marker) { return marker.json; }
+template<> inline std::string as_string<Marker>() { return "marker"; }
+inline json as_json(const Marker& marker) { return marker.json_; }
 
 }; // ply
 

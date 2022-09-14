@@ -14,8 +14,8 @@ struct ZAxis : Axis<ZAxis>, Axis<ZAxis>::Members<RangeSlider>, virtual Data
     using MembersBase::MembersBase;
 };
 
-template<> inline string as_string<ZAxis>() { return "zaxis"; }
-inline nlj::json as_json(const ZAxis& axis) { return axis.json; }
+template<> inline std::string as_string<ZAxis>() { return "zaxis"; }
+inline json as_json(const ZAxis& axis) { return axis.json_; }
 
 }; // ply
 

@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #pragma once
@@ -14,15 +14,15 @@ struct Line : Members<Line,Color,Dash,Shape>, virtual Data
     using MembersBase = Members<Line,Color,Dash,Shape>;
     using MembersBase::MembersBase;
     
-    Line& smoothing(real s) { json["smoothing"] = s; return *this; }
-    Line& simplify(bool b) { json["simplify"] = b; return *this; }
+    Line& smoothing(double s) { json_["smoothing"] = s; return *this; }
+    Line& simplify(bool b) { json_["simplify"] = b; return *this; }
 
     template<class T>
-    Line& width(T w) { json["width"] = w; return *this; }
+    Line& width(T w) { json_["width"] = w; return *this; }
 };
 
-template<> inline string as_string<Line>() { return "line"; }
-inline nlj::json as_json(const Line& line) { return line.json; }
+template<> inline std::string as_string<Line>() { return "line"; }
+inline json as_json(const Line& line) { return line.json_; }
 
 }; // ply
 

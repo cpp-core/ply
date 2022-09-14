@@ -1,4 +1,4 @@
-// Copyright (C) 2019 by Mark Melton
+// Copyright (C) 2019, 2022 by Mark Melton
 //
 
 #pragma once
@@ -15,23 +15,23 @@ struct OHLC : Members<OHLC,Color,Line,Name,PlotVisible>, Trace
     using MembersBase = Members<OHLC,Color,Line,Name,PlotVisible>;
     using MembersBase::MembersBase;
     
-    OHLC() { json = base(); }
-    static nlj::json base() { return {{ "type", "ohlc" }}; }
+    OHLC() { json_ = base(); }
+    static json base() { return {{ "type", "ohlc" }}; }
 
-    OHLC& showlegend(bool b = true) { json["showlegend"] = b; return *this; }
-    OHLC& legendgroup(string_view name) { json["legendgroup"] = name; return *this; }
-    OHLC& opacity(real alpha) { json["opacity"] = alpha; return *this; }
-    OHLC& stackgroup(string_view name) { json["stackgroup"] = name; return *this; }
-    OHLC& text(string_view str) { json["text"] = str; return *this; }
+    OHLC& showlegend(bool b = true) { json_["showlegend"] = b; return *this; }
+    OHLC& legendgroup(std::string_view name) { json_["legendgroup"] = name; return *this; }
+    OHLC& opacity(double alpha) { json_["opacity"] = alpha; return *this; }
+    OHLC& stackgroup(std::string_view name) { json_["stackgroup"] = name; return *this; }
+    OHLC& text(std::string_view str) { json_["text"] = str; return *this; }
 
-    template<class C> OHLC& x(const C& data) { json["x"] = data; return *this; }
-    template<class C> OHLC& open(const C& data) { json["open"] = data; return *this; }
-    template<class C> OHLC& high(const C& data) { json["high"] = data; return *this; }
-    template<class C> OHLC& low(const C& data) { json["low"] = data; return *this; }
-    template<class C> OHLC& close(const C& data) { json["close"] = data; return *this; }
+    template<class C> OHLC& x(const C& data) { json_["x"] = data; return *this; }
+    template<class C> OHLC& open(const C& data) { json_["open"] = data; return *this; }
+    template<class C> OHLC& high(const C& data) { json_["high"] = data; return *this; }
+    template<class C> OHLC& low(const C& data) { json_["low"] = data; return *this; }
+    template<class C> OHLC& close(const C& data) { json_["close"] = data; return *this; }
 };
 
-template<> inline string as_string<OHLC>() { return "ohlc"; }
+template<> inline std::string as_string<OHLC>() { return "ohlc"; }
 
 }; // ply
 

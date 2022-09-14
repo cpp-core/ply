@@ -11,7 +11,7 @@ namespace ply
 template<class D, class... Ts>
 struct Members : virtual Data
 {
-    static nlj::json base() { return nlj::json::object(); }
+    static json base() { return json::object(); }
 
     Members()
     { }
@@ -20,15 +20,15 @@ struct Members : virtual Data
     requires (core::mp::is_member_v<Us,Ts...> && ...)
     Members(const Us&... obj)
     {
-	json = D::base();
-	((json[as_string<Us>()] = as_json(obj)), ...);
+	json_ = D::base();
+	((json_[as_string<Us>()] = as_json(obj)), ...);
     }
 
     template<class... Us>
     requires (core::mp::is_member_v<Us,Ts...> && ...)
     D& operator()(const Us&... obj)
     {
-	((json[as_string<Us>()] = as_json(obj)), ...);
+	((json_[as_string<Us>()] = as_json(obj)), ...);
 	return *static_cast<D*>(this);
     }
 };

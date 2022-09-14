@@ -10,11 +10,11 @@ namespace ply
 struct Range : virtual Data
 {
     template<class C>
-    Range(const C& data) { json = data; }
+    Range(const C& data) { json_ = data; }
 };
 
-template<> inline string as_string<Range>() { return "range"; }
-inline nlj::json as_json(const Range& range) { return range.json; }
+template<> inline std::string as_string<Range>() { return "range"; }
+inline json as_json(const Range& range) { return range.json_; }
 
 }; // ply
 

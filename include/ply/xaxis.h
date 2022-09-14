@@ -14,8 +14,8 @@ struct XAxis : Axis<XAxis>, Axis<XAxis>::Members<RangeSlider>, virtual Data
     using MembersBase::MembersBase;
 };
 
-template<> inline string as_string<XAxis>() { return "xaxis"; }
-inline nlj::json as_json(const XAxis& axis) { return axis.json; }
+template<> inline std::string as_string<XAxis>() { return "xaxis"; }
+inline json as_json(const XAxis& axis) { return axis.json_; }
 
 }; // ply
 

@@ -2,22 +2,25 @@
 //
 
 #pragma once
-#include "core/util/common.h"
-#include "core/extra/json/nljson.h"
+#include <string>
+#include <vector>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 namespace ply
 {
 
-template<class T> string as_string();
+template<class T> std::string as_string();
 
 struct Data
 {
-    Data() { json = nlj::json::object(); }
-    nlj::json json;
+    Data() { json_ = json::object(); }
+    json json_;
 };
 
 struct Trace : virtual Data { };
-using Traces = vector<Trace>;
+using Traces = std::vector<Trace>;
 
 }; // ply
 

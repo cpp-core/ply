@@ -13,8 +13,8 @@ struct YAxis : Axis<YAxis>, Axis<YAxis>::Members<>, virtual Data
     using MembersBase::MembersBase;
 };
 
-template<> inline string as_string<YAxis>() { return "yaxis"; }
-inline nlj::json as_json(const YAxis& axis) { return axis.json; }
+template<> inline std::string as_string<YAxis>() { return "yaxis"; }
+inline json as_json(const YAxis& axis) { return axis.json_; }
 
 }; // ply
 

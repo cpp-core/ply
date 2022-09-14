@@ -16,23 +16,23 @@ struct SliderYAxis : Members<SliderYAxis,Range,SliderRangeMode>, virtual Data
     using MembersBase::MembersBase;
 };
 
-template<> inline string as_string<SliderYAxis>() { return "yaxis"; }
-inline nlj::json as_json(const SliderYAxis& axis) { return axis.json; }
+template<> inline std::string as_string<SliderYAxis>() { return "yaxis"; }
+inline json as_json(const SliderYAxis& axis) { return axis.json_; }
 
 struct RangeSlider : Members<RangeSlider,Range,SliderYAxis,Visible>, virtual Data
 {
     using MembersBase = Members<RangeSlider,Range,SliderYAxis,Visible>;
     using MembersBase::MembersBase;
     
-    RangeSlider& bgcolor(const Color& c) { json["bgcolor"] = as_json(c); return *this; }
-    RangeSlider& bordercolor(const Color& c) { json["bordercolor"] = as_json(c); return *this; }
-    RangeSlider& borderwidth(int w) { json["borderwidth"] = w; return *this; }
-    RangeSlider& autorange(bool b) { json["autorange"] = b; return *this; }
-    template<class T> RangeSlider& thickness(T x) { json["thickness"] = x; return *this; }
+    RangeSlider& bgcolor(const Color& c) { json_["bgcolor"] = as_json(c); return *this; }
+    RangeSlider& bordercolor(const Color& c) { json_["bordercolor"] = as_json(c); return *this; }
+    RangeSlider& borderwidth(int w) { json_["borderwidth"] = w; return *this; }
+    RangeSlider& autorange(bool b) { json_["autorange"] = b; return *this; }
+    template<class T> RangeSlider& thickness(T x) { json_["thickness"] = x; return *this; }
 };
 
-template<> inline string as_string<RangeSlider>() { return "rangeslider"; }
-inline nlj::json as_json(const RangeSlider& slider) { return slider.json; }
+template<> inline std::string as_string<RangeSlider>() { return "rangeslider"; }
+inline json as_json(const RangeSlider& slider) { return slider.json_; }
 
 }; // ply
 

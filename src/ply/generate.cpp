@@ -56,20 +56,20 @@ static constexpr auto html_script_inline_tmpl = R"XX(
 static constexpr auto plotly_js_cdn = "https://cdn.plot.ly/plotly-latest.min.js";
 static constexpr auto plotly_js_file_tmpl = "{share:}/ply/js/plotly-latest.min.js";
 
-string construct_plot_args(const Traces& traces, const Layout& layout)
+std::string construct_plot_args(const Traces& traces, const Layout& layout)
 {
-    strings strs;
+    std::vector<std::string> strs;
     for (const auto& trace : traces)
-	strs.emplace_back(trace.json.dump());
-    auto args = "[" + core::join(strs, ",") + "]";
-    if (not layout.json.is_null())
-	args += "," + layout.json.dump();
+	strs.emplace_back(trace.json_.dump());
+    auto args = "[" + core::str::join(strs, ",") + "]";
+    if (not layout.json_.is_null())
+	args += "," + layout.json_.dump();
     return args;
 }
 
 void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream& os, bool cdn)
 {
-    string body_include;
+    std::string body_include;
     if (cdn)
     {
 	body_include = inja::render(html_script_src_tmpl, {{ "cdn", plotly_js_cdn }});
@@ -77,7 +77,7 @@ void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream
     else
     {
 	auto js_file = fmt::format(plotly_js_file_tmpl, fmt::arg("share", PlyShareDirectory));
-	auto js = core::slurp_into_string(js_file);
+	auto js = core::str::slurp_into_string(js_file);
 	body_include = inja::render(html_script_inline_tmpl, {{ "inline_js", js }});
     }
     
@@ -87,7 +87,7 @@ void generate_html(const Traces& traces, const ply::Layout& layout, std::ostream
 			     {{ "guid", guid },
 			      { "json", args },
 			      { "body_include", body_include }});			     
-    os << html << endl;
+    os << html << std::endl;
 }
 
 }; // ply
