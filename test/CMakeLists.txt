@@ -8,6 +8,7 @@ set(TESTS
   color
   contour
   enum
+  generate
   heatmap
   layout
   line
