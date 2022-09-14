@@ -40,6 +40,11 @@ find_package(cxx_core_string REQUIRED)
 find_package(cxx_core_util REQUIRED)
 find_package(inja REQUIRED)
 
+message("-- cxx-ply: using cxx_core_mp: ${cxx_core_mp_DIR}")
+message("-- cxx-ply: using cxx_core_string: ${cxx_core_string_DIR}")
+message("-- cxx-ply: using cxx_core_util: ${cxx_core_util_DIR}")
+message("-- cxx-ply: using inja: ${inja_DIR}")
+
 # Configuration
 #
 # The config.h contains the base location of the shared artifacts
