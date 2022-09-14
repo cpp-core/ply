@@ -43,8 +43,12 @@ find_package(inja REQUIRED)
 # Generated files
 #
 set(PLY_SHARE_DIR ${CMAKE_CURRENT_BINARY_DIR}/share)
-configure_file(include/ply/config.h.in include/ply/config.h @ONLY)
-configure_file(src/js/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
+configure_file(config/config.h.in include/ply/config.h @ONLY)
+configure_file(config/plotly-latest.min.js share/ply/js/plotly-latest.min.js COPYONLY)
+
+set(PLY_SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share)
+configure_file(config/config.h.in forinstall/config.h @ONLY)
+configure_file(config/plotly-latest.min.js forinstall/plotly-latest.min.js COPYONLY)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -108,3 +112,5 @@ install_config(cxx_ply)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/ply/config.h DESTINATION include/ply)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ply DESTINATION include)
+install(FILES ${PROJECT_BINARY_DIR}/forinstall/config.h DESTINATION include/ply)
+install(FILES ${PROJECT_BINARY_DIR}/forinstall/plotly-latest.min.js DESTINATION ${CMAKE_INSTALL_PREFIX}/share/ply/js)
