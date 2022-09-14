@@ -13,7 +13,7 @@ TEST(Ply, Generate)
 
     std::stringstream ss;
     generate_html({trace}, Layout(), ss);
-    EXPECT_GT(ss.str().size(), 1000);
+    EXPECT_GT(ss.str().size(), 100);
 }
 
 int main(int argc, char *argv[])
