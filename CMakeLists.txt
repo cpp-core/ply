@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
-project(cxx_ply VERSION 0.1 LANGUAGES CXX)
+project(ply VERSION 0.1 LANGUAGES CXX)
 
 # Make including this file idempotent
 #
-if (TARGET cxx_ply)
+if (TARGET ply)
   return()
 endif()
 
@@ -29,21 +29,21 @@ endif()
 option(PLY_TEST "Generate the tests." OFF)
 option(PLY_TOOLS "Build the tools." ON)
 
-message("-- cxx-ply: PLY_TEST ${PLY_TEST}")
-message("-- cxx-ply: PLY_TOOLS ${PLY_TOOLS}")
-message("-- cxx-ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
+message("-- ply: PLY_TEST ${PLY_TEST}")
+message("-- ply: PLY_TOOLS ${PLY_TOOLS}")
+message("-- ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 
 # Add our dependencies
 #
-find_package(cxx_core_mp REQUIRED)
-find_package(cxx_core_string REQUIRED)
-find_package(cxx_core_util REQUIRED)
+find_package(mp REQUIRED)
+find_package(string REQUIRED)
+find_package(util REQUIRED)
 find_package(inja REQUIRED)
 
-message("-- cxx-ply: using cxx_core_mp: ${cxx_core_mp_DIR}")
-message("-- cxx-ply: using cxx_core_string: ${cxx_core_string_DIR}")
-message("-- cxx-ply: using cxx_core_util: ${cxx_core_util_DIR}")
-message("-- cxx-ply: using inja: ${inja_DIR}")
+message("-- ply: using mp: ${mp_DIR}")
+message("-- ply: using string: ${string_DIR}")
+message("-- ply: using util: ${util_DIR}")
+message("-- ply: using inja: ${inja_DIR}")
 
 # Configuration
 #
@@ -75,21 +75,21 @@ foreach(NAME ${SOURCES})
   list(APPEND FILES "src/${NAME}")
 endforeach()
 
-add_library(cxx_ply ${FILES})
+add_library(ply ${FILES})
 
 set(LIBRARIES
-  cxx_core_mp::cxx_core_mp
-  cxx_core_util::cxx_core_util)
+  mp::mp
+  util::util)
 
 set(PRIVATE_LIBRARIES
-  cxx_core_string::cxx_core_string
+  string::string
   pantor::inja)
 
-target_link_libraries(cxx_ply
+target_link_libraries(ply
   PUBLIC ${LIBRARIES}
   PRIVATE ${PRIVATE_LIBRARIES})
 
-target_include_directories(cxx_ply PUBLIC
+target_include_directories(ply PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
@@ -102,7 +102,7 @@ if(PLY_TOOLS)
 
   foreach(NAME ${TOOLS})
     add_executable(${NAME} src/tools/${NAME}.cpp)
-    target_link_libraries(${NAME} cxx_ply)
+    target_link_libraries(${NAME} ply)
   endforeach()
 endif()
 
@@ -116,7 +116,7 @@ if(PLY_TEST)
 endif()
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
-install_config(cxx_ply)
+install_config(ply)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/ply/config.h DESTINATION include/ply)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ply DESTINATION include)
