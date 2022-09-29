@@ -1,9 +1,7 @@
 @PACKAGE_INIT@
 
 include(CMakeFindDependencyMacro)
-find_dependency(pp)
-find_dependency(mp)
-find_dependency(nlohmann_json)
+find_dependency(util)
 find_dependency(inja)
 
 include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
