@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.24 FATAL_ERROR)
 project(ply VERSION 0.1 LANGUAGES CXX)
 
 # Make including this file idempotent
@@ -7,55 +7,53 @@ if (TARGET ply OR TARGET ply::ply)
   return()
 endif()
 
-# Configuration variables.
-#
-# Build the tests and set directories if this is the master project.
-#
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  set(PLY_TEST ON CACHE BOOL "Generate the tests.")
-  set(PLY_TOOLS ON CACHE BOOL "Build the tools.")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-  set(CMAKE_DOCS_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/docs)
-  
-  # Have cmake output the compilation commands and create a link to it
-  # from the project root directory so the language server can find
-  # it.
-  #
-  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
-    ${CMAKE_BINARY_DIR}/compile_commands.json
-    ${CMAKE_SOURCE_DIR}/compile_commands.json)
-endif()
-
 # PLY_TEST -- Generate the tests
 # PLY_TOOLS -- Build the tools
 #
 option(PLY_TEST "Generate the tests." OFF)
 option(PLY_TOOLS "Build the tools." ON)
 
-message("-- ply: PLY_TEST ${PLY_TEST}")
-message("-- ply: PLY_TOOLS ${PLY_TOOLS}")
-message("-- ply: CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
-
-message("-- ply: using mp: ${mp_DIR}")
-message("-- ply: using string: ${string_DIR}")
-message("-- ply: using util: ${util_DIR}")
-message("-- ply: using inja: ${inja_DIR}")
-
-# Configuration
+# If this is the current project.
 #
+if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
+  # Include the cmake helpers
+  #
+  include(${CPP_CORE_SOURCE_DIR}/projects/cmake/utils/all.cmake)
+  include(${CPP_CORE_SOURCE_DIR}/projects/cmake/recipes/all.cmake)
+  
+  # Geneerte the tests
+  #
+  set(PLY_TEST ON CACHE BOOL "Generate the tests." FORCE)
+
+  # compile_commands.json
+  #
+  symlink_compile_commands()
+
+  # Convenience targets for git operations
+  #
+  make_submodule_pull_target()
+endif()
+
+# Put executables in the top-level binary directory
+#
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Output parameters
+#
+message("-- ply: Install Prefix: ${CMAKE_INSTALL_PREFIX}")
+message("-- ply: test ${PLY_TEST}")
+message("-- ply: tools ${PLY_TOOLS}")
+
 # The config.h contains the base location of the shared artifacts
 # which is different for build versus install. We configure the file
 # once for each. The install version is later copied to the final
 # destination by the install cmake.
 #
-set(PLY_SHARE_DIR ${PROJECT_SOURCE_DIR}/share)
-configure_file(config/config.h.in include/ply/config.h @ONLY)
+set(PLY_SHARE_DIR ${CMAKE_BINARY_DIR}/share)
+configure_file(config/config.h.in ${CMAKE_BINARY_DIR}/include/ply/config.h @ONLY)
 
 set(PLY_SHARE_DIR ${CMAKE_INSTALL_PREFIX}/share)
-configure_file(config/config.h.in forinstall/include/ply/config.h @ONLY)
+configure_file(config/config.h.in ${CMAKE_BINARY_DIR}/forinstall/include/ply/config.h @ONLY)
 
 # Setup the compilation before adding dependencies
 #
@@ -70,9 +68,8 @@ add_link_options(-stdlib=libc++)
 
 # Add our dependencies
 #
-include(cmake/cpp_core_find_package.cmake)
-cpp_core_find_package(util)
-cpp_core_find_package(inja TARGETS pantor::inja)
+add_util()
+add_inja()
 
 # Build the library
 #
@@ -112,11 +109,10 @@ if(PLY_TOOLS)
 endif()
 
 if(PLY_TEST)
-  enable_testing()
+  add_gtest()
   add_subdirectory(test)
 endif()
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(ply)
 install(FILES ${CMAKE_BINARY_DIR}/forinstall/include/ply/config.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ply)
