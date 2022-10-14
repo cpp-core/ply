@@ -7,23 +7,17 @@ if (TARGET ply OR TARGET ply::ply)
   return()
 endif()
 
-# PLY_TEST -- Generate the tests
-# PLY_TOOLS -- Build the tools
-#
-option(PLY_TEST "Generate the tests." OFF)
-option(PLY_TOOLS "Build the tools." ON)
-
 # If this is the current project.
 #
 if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
-  # Include the cmake helpers
+  # Laod the cmake recipes and utilities.
   #
-  include(${CPP_CORE_SOURCE_DIR}/projects/cmake/utils/all.cmake)
-  include(${CPP_CORE_SOURCE_DIR}/projects/cmake/recipes/all.cmake)
-  
-  # Geneerte the tests
+  include(${CMAKE_CURRENT_LIST_DIR}/cmake/load_cmake_helpers.cmake)
+
+  # Generate the tests and tools
   #
-  set(PLY_TEST ON CACHE BOOL "Generate the tests." FORCE)
+  option(PLY_TEST "Generate the tests." ON)
+  option(PLY_TOOLS "Build the tools." OFF)
 
   # compile_commands.json
   #
@@ -32,6 +26,10 @@ if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
   # Convenience targets for git operations
   #
   make_submodule_pull_target()
+
+else()
+  option(PLY_TEST "Generate the tests." OFF)
+  option(PLY_TOOLS "Build the tools." OFF)
 endif()
 
 # Put executables in the top-level binary directory
